@@ -4,7 +4,7 @@ Tabla Usuario: Esta tabla almacena información sobre los usuarios que realizan 
 id_usuario: Un identificador único para cada usuario.
 nombre: El nombre del usuario.
 dni: El Documento Nacional de Identidad del usuario.
-gmail: La dirección de correo electrónico del usuario (parece que está destinado a correos de Gmail).
+gmail: La dirección de correo electrónico del usuario.
 
 Tabla Viajes: Esta tabla guarda los detalles de los viajes realizados por los usuarios. Las columnas son:
 id_viaje: Un identificador único para cada viaje.
