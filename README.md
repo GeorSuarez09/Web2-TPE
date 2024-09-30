@@ -1,3 +1,5 @@
+INTEGRANTES: Suarez georgina naira -  Ferreyra zaira melina
+
 Mi base de datos para el trabajo práctico de viajes se estructura en dos tablas relacionadas:
 
 Tabla Usuario: Esta tabla almacena información sobre los usuarios que realizan viajes. Las columnas que contiene son:
