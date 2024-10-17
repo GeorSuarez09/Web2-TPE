@@ -1,5 +1,5 @@
 <?php
-
+ 
 class ViajeModel{
     private $db;
    function conected() {
@@ -21,16 +21,6 @@ class ViajeModel{
          return $viajes;
      }
  
-   //OBTENGO EL VIAJE POR ID
-   public function showViajes($id) {    
-         //Abrimos la conexion
-         $db = $this-> conected();
-
-    $query = $db->prepare('SELECT * FROM viajes WHERE ID_viaje = ?');
-    $query->execute([$id]);   
-    $viajes = $query->fetch(PDO::FETCH_OBJ);
-    return $viajes;
-}
 
      //AGREGO EL VIAJE
      public function agregarViaje($fecha, $hora, $origen, $destino) { 
