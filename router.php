@@ -11,6 +11,7 @@ if (!empty($_GET['action'])) {
 //Parsea la accion para separar accion real de parametros
 $params = explode ('/' , $action);
 
+//Determina que camino seguir segun su accion 
 switch($params[0]){
     case 'listar':
         $controller = new viajeController;

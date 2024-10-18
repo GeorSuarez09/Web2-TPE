@@ -14,10 +14,13 @@ class ViajeView{
             echo </li>";
         } 
         echo "</ul>";
+
+        require_once 'templates/footer.phtml';
      }
 
-     function Error(){
-        
+     function Error($msg){
+        echo "<h1> ERROR </h1>";
+        echo "<h2>" .$msg . "</h2>";
      }
 }
 ?>

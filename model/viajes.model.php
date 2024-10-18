@@ -1,8 +1,7 @@
 <?php
  
 class ViajeModel{
-    private $db;
-   function conected() {
+   private function conected() {
         $db = new PDO('mysql:host=localhost;dbname=viaje_at;charset=utf8', 'root', '');
         return $db;
      }
@@ -29,6 +28,8 @@ class ViajeModel{
 
          $query = $db->prepare('INSERT INTO viajes(fecha, hora, origen, destino) VALUES (?, ?, ?, ?)');
          $query->execute([$fecha, $hora, $origen, $destino]);
+
+         return $db->lastInsertId();
      }
  
     //EDITAR VIAJE

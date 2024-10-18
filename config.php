@@ -3,3 +3,4 @@
     const MYSQL_PASS = '';
     const MYSQL_DB = 'viaje_at';
     const MYSQL_HOST = 'localhost';
+?>
