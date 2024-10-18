@@ -7,10 +7,10 @@ class ViajeView{
         require_once 'templates/home.phtml';
 
         echo  "<ul>";
-        foreach($viajes as $viaje){
+        foreach($viaje as $viajes){
             echo "<li>;
-            $viaje -> origen | $viaje -> destino | $viaje -> hora | $viaje -> fecha
-            <a class='btn-eliminar' href='eliminar/$viaje->id'>ELIMINAR</a>
+            $viajes -> origen | $viajes -> destino | $viajes -> hora | $viajes -> fecha
+            <a class='btn-eliminar' href='eliminar/$viajes->id'>ELIMINAR</a>
             echo </li>";
         } 
         echo "</ul>";
