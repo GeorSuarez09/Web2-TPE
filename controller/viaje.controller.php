@@ -15,7 +15,7 @@
    $viaje = $this-> model -> getViaje();
  
    //Actualizar vista
-    $this-> view -> getViaje($viaje);
+    $this-> view -> ShowViaje($viaje);
   }
 
   function addViaje(){

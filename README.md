@@ -1,13 +1,13 @@
 INTEGRANTES: Suarez georgina naira -  Ferreyra zaira melina
 
 Mi base de datos para el trabajo práctico de viajes se estructura en dos tablas relacionadas:
-
+CATEGORIA:
 Tabla Usuario: Esta tabla almacena información sobre los usuarios que realizan viajes. Las columnas que contiene son:
 id_usuario: Un identificador único para cada usuario.
 nombre: El nombre del usuario.
 dni: El Documento Nacional de Identidad del usuario.
 gmail: La dirección de correo electrónico del usuario.
-
+ITEM:
 Tabla Viajes: Esta tabla guarda los detalles de los viajes realizados por los usuarios. Las columnas son:
 id_viaje: Un identificador único para cada viaje.
 fecha: La fecha en la que se realizó el viaje.
