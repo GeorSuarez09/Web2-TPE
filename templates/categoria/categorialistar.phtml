@@ -1,0 +1,32 @@
+<?php require 'templates/header.phtml'; ?>
+
+<div>
+    <h1>Listado de Categorías</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Temporada</th>
+                <th>Empresa</th>
+                <th>Comodidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($categorias as $categoria): ?>
+                <tr>
+                    <td><?php echo $categoria->temporada; ?></td>
+                    <td><?php echo $categoria->empresa; ?></td>
+                    <td><?php echo $categoria->comodidad; ?></td>
+                    <td>
+                        <a href="editar/<?php echo $categoria->ID_categoria; ?>">Editar</a>
+                        <a href="eliminar/<?php echo $categoria->ID_categoria; ?>">Eliminar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<a href="agregar">Agregar Categoría</a>
+
+<?php require 'templates/footer.phtml'; ?>
