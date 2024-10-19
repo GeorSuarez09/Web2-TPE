@@ -1,32 +1,65 @@
-<?php require 'templates/header.phtml'; ?>
+<?php require_once 'templates/header.phtml'; ?>
+<h1>Agregar Nueva categoria</h1> 
+    
+    <div>
+        <div>
+            <form action="agregar_categoria" method="POST" novalidate>
+         
+         <!-- TEMPORADA -->
+         <div class="col2">
+                    <label for="temporada">En que temporada viaja?</label>
+                    <select name="temporada" id="temporada">
+                        <option value="Verano">Verano</option>
+                        <option value="Invierno">Invierno</option>
+                        <option value="Primavera">Primavera</option>
+                        <option value="Otoño">Otoño</option>
+                    </select>
+                    <div>Por favor, ingresa una temporada.</div>
+                </div>
 
-<div>
-    <h1>Listado de Categorías</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Temporada</th>
-                <th>Empresa</th>
-                <th>Comodidad</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($categorias as $categoria): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($categoria->temporada); ?></td>
-                    <td><?php echo htmlspecialchars($categoria->empresa); ?></td>
-                    <td><?php echo htmlspecialchars($categoria->comodidad); ?></td>
-                    <td>
-                        <a href="<?php echo BASE_URL . 'editar_categoria/' . $categoria->ID_categoria; ?>">Editar</a>
-                        <a href="<?php echo BASE_URL . 'eliminar_categoria/' . $categoria->ID_categoria; ?>">Eliminar</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                <!-- EMPRESA -->
+                <div class="col2">
+                    <label for="empresa">Empresa</label>
+                    <select name="empresa" id="empresa">
+                        <option value="Via Tac">Via Tac</option>
+                        <option value="Flecha Bus">Flecha Bus</option>
+                        <option value="Condor">Condor</option>
+                        <option value="Via Bariloche">Via Bariloche</option>
+                    </select>
+                    <div>Por favor, ingresa una empresa.</div>
+                </div>
+
+                <!-- COMODIDAD  -->
+                <div class="col2">
+                    <label for="comodidad" >Comodidad</label>
+                    <select name="comodidad" id="comodidad">
+                        <option value="Semi cama">Semi cama</option>
+                        <option value="Estandar">Estandar</option>
+                    </select>
+                    <div>Por favor, selecciona una comodidad de su preferencia.</div>
+                </div>
+
+            
+                <?php echo("<ul>") ?>
+                        <?php foreach ($categorias as $categoria): ?>
+                            <?php
+                            echo ("<li>");
+                            $categorias-> temporada | $categorias -> empresa| $categorias -> comodidad ;
+                            echo ("</li>");
+                            ?>
+                         <?php echo("</ul>") ?>
+                        <?php endforeach; ?>
+                </div>
+
+
+                <!-- Botón de envío -->
+                <div class="col2">
+                    <button class="btn-agregar" type="submit">Agregar Viaje</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
 </div>
-
-<a href="<?php echo BASE_URL . 'agregar_categoria'; ?>">Agregar Categoría</a>
 
 <?php require 'templates/footer.phtml'; ?>

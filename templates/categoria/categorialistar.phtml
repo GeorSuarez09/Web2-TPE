@@ -18,15 +18,13 @@
                     <td><?php echo $categoria->empresa; ?></td>
                     <td><?php echo $categoria->comodidad; ?></td>
                     <td>
-                        <a href="editar/<?php echo $categoria->ID_categoria; ?>">Editar</a>
-                        <a href="eliminar/<?php echo $categoria->ID_categoria; ?>">Eliminar</a>
+                        <a href="editar_categoria/<?php echo $categoria->ID_categoria; ?>">Editar</a>
+                        <a href="eliminar_categoria/<?php echo $categoria->ID_categoria; ?>">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 </div>
-
-<a href="agregar">Agregar Categoría</a>
 
 <?php require 'templates/footer.phtml'; ?>
