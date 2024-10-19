@@ -1,0 +1,24 @@
+<?php require 'templates/header.phtml'; ?>
+
+<div>
+    <h1>Editar Viaje</h1>
+    <form method="POST" action="update">
+        <input type="hidden" name="id" value="<?php echo $viaje->ID_viaje; ?>">
+        
+        <label>Origen:</label>
+        <input type="text" name="Origen" value="<?php echo $viaje->Origen; ?>" required>
+        
+        <label>Destino:</label>
+        <input type="text" name="Destino" value="<?php echo $viaje->Destino; ?>" required>
+        
+        <label>Fecha:</label>
+        <input type="date" name="Fecha" value="<?php echo $viaje->Fecha; ?>" required>
+        
+        <label>Hora:</label>
+        <input type="time" name="Hora" value="<?php echo $viaje->Hora; ?>" required>
+
+        <button type="submit">Actualizar</button>
+    </form>
+</div>
+
+<?php require 'templates/footer.phtml'; ?>

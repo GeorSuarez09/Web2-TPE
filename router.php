@@ -35,6 +35,7 @@ switch($params[0]){
             $controller = new viajeController;
             $controller->updateViaje();
             break;
+            default:
     }
     
 

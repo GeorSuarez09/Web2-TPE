@@ -23,18 +23,18 @@ class viajeController
 
   function addViaje()
   {
-    $origen = $_POST['origen'];
-    $destino = $_POST['destino'];
-    $fecha = $_POST['fecha'];
-    $hora = $_POST['hora'];
+    $origen = $_POST['Origen'];
+    $destino = $_POST['Destino'];
+    $fecha = $_POST['Fecha'];
+    $hora = $_POST['Hora'];
 
     //Verifico campos obligatorios
     if (empty($origen) || empty($destino) || empty($fecha) || empty($hora)) {
-      $this->view->Error('Faltan campos obligatorios');
+     $this->view->Error('Faltan campos obligatorios');
     }
 
     //Inserto la tarea en la bd
-    $id = $this->model->agregarViaje($origen, $destino, $fecha, $hora);
+    $this->model->agregarViaje($origen, $destino, $fecha, $hora);
 
     //Redirigimos al listado
     header("Location:" . BASE_URL);
@@ -44,19 +44,19 @@ class viajeController
     // Obtiene el viaje que se quiere editar
     $viaje = $this->model->getViajeById($id);
     // Muestra la vista de edición
-    $this->view->showEditarViaje($viaje);
+   $this->view->showEditarViaje($viaje);
 }
 
 function updateViaje() {
   $id = $_POST['id'];
-  $origen = $_POST['origen'];
-  $destino = $_POST['destino'];
-  $fecha = $_POST['fecha'];
-  $hora = $_POST['hora'];
+  $origen = $_POST['Origen'];
+  $destino = $_POST['Destino'];
+  $fecha = $_POST['Fecha'];
+  $hora = $_POST['Hora'];
 
   // Verifico campos obligatorios
   if (empty($origen) || empty($destino) || empty($fecha) || empty($hora)) {
-      $this->view->Error('Faltan campos obligatorios');
+   //   $this->view->Error('Faltan campos obligatorios');
       return;
   }
 

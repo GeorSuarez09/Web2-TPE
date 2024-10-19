@@ -1,0 +1,12 @@
+<?php require 'templates/header.phtml'; ?>
+
+<div>
+    <h1>Eliminar Viaje</h1>
+    <p>¿Está seguro de que desea eliminar el viaje de origen "<?php echo $viaje->Origen; ?>" y destino "<?php echo $viaje->Destino; ?>"?</p>
+    <form method="POST" action="eliminar/<?php echo $viaje->ID_viaje; ?>">
+        <button type="submit">Confirmar Eliminación</button>
+        <a href="<?php echo BASE_URL; ?>">Cancelar</a>
+    </form>
+</div>
+
+<?php require 'templates/footer.phtml'; ?>

@@ -1,0 +1,59 @@
+<?php require 'templates/header.phtml'; ?>
+
+<div>
+    <h1>Agregar Nuevo Viaje</h1>
+    
+    <div>
+        <div>
+            <form action="agregar" method="POST" novalidate>
+                
+         <!-- ORIGEN -->
+                <div class="col1">
+                    <label for="origen" class="form-label">Origen, Destino de inicio</label>
+                    <input type="text" id="origen" name="Origen" placeholder="Ingrese su origen:" required>
+                    <div>Por favor, ingresa un origen válido.</div>
+                </div>
+
+                <!-- DESTINO -->
+                <div class="col1">
+                    <label for="destino">Destino</label>
+                    <input type="text"  id="destino" name="Destino" placeholder="Ingrese su destino:" required>
+                    <div>Por favor, ingresa un destino de fin válido.</div>
+                </div>
+
+                <!-- Fecha de Viaje -->
+                <div class="col1">
+                    <label for="fecha" >Fecha de Viaje</label>
+                    <input type="date" id="fecha" name="Fecha" required>
+                    <div class="invalid-feedback">Por favor, selecciona una fecha de viaje válida.</div>
+                </div>
+
+                <!-- Precio del Viaje -->
+                <div class="col1">
+                    <label for="hora">Horario</label>
+                    <input type="number"  id="hora" name="hora" placeholder="Ingrese precio en pesos" required>
+                    <div class="invalid-feedback">Por favor, ingresa un precio válido.</div>
+                </div>
+                <?php echo("<ul>") ?>
+                        <?php foreach ($viajes as $viaje): ?>
+                            <?php
+                            echo ("<li>");
+                            $viajes -> origen | $viajes -> destino | $viajes -> hora | $viajes -> fecha;
+                            echo ("</li>");
+                            ?>
+                         <?php echo("</ul>") ?>
+                        <?php endforeach; ?>
+                </div>
+
+
+                <!-- Botón de envío -->
+                <div class="col1">
+                    <button class="btn-agregar" type="submit">Agregar Viaje</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php require 'templates/footer.phtml'; ?>
