@@ -15,18 +15,27 @@
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+    //Obtengo viaje por ID
+    public function getViajeById($id) {
+        $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
      //Agregar Viaje
     public function agregarViaje($fecha, $hora, $origen, $destino) {
         $query = $this->db->prepare('INSERT INTO viaje(fecha, hora, origen, destino) VALUES (?, ?, ?, ?)');
         $query->execute([$fecha, $hora, $origen, $destino]);
     }
+
     //Editar viaje
     public function editarViaje($fecha, $hora, $origen, $destino, $id) {
         $query = $this->db->prepare('UPDATE viaje SET `fecha` = ?, `hora` = ?, `origen` = ?, `destino` = ? WHERE `ID_viaje` = ?');
         $query->execute([$fecha, $hora, $origen, $destino, $id]);
     }
+
      //Eliminar viaje
-    public function EliminarViaje($id) {
+    public function deleteViaje($id) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
         $query->execute([$id]);
     }

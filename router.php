@@ -18,6 +18,24 @@ switch($params[0]){
         $controller->   listarViaje();
         break;
     case 'agregar':
-        
+        $controller = new viajeController;
+        $controller -> addViaje();
+        break;
+    case 'eliminar':
+        $controller = new viajeController;
+        $id = $params[1];
+        $controller -> eliminarViaje($id);
+        break;
+        case 'editar':
+            $controller = new viajeController;
+            $id = $params[1];
+            $controller->editarViaje($id);
+            break;
+        case 'update':
+            $controller = new viajeController;
+            $controller->updateViaje();
+            break;
     }
+    
+
 ?>
