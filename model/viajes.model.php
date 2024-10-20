@@ -13,6 +13,7 @@
     public function getViaje() {
         $query = $this->db->prepare('SELECT * FROM viaje');
         $query->execute();
+        //Obtengo todos los datos que arroja la query
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
     //Obtengo viaje por ID
@@ -37,7 +38,7 @@
      //Eliminar viaje
     public function deleteViaje($id) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
-        $query->execute([$id]);
+        $query->execute([$id]); //evitar la inyeccion SQL
     }
 }
     ?>
