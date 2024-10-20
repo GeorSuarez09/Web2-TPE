@@ -2,7 +2,7 @@
 
 class ViajeView {
     function ShowViaje($viajes) {
-        require_once "templates/viaje/formlistar.phtml";  //  cargamos la lista de viajes
+        require_once "templates/viaje/formulario.phtml";  //  cargamos la lista de viajes
     }
 
     function Error($msg) {

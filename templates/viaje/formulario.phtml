@@ -34,15 +34,17 @@
                     <input type="number"  id="hora" name="hora" placeholder="Ingrese precio en pesos" required>
                     <div class="invalid-feedback">Por favor, ingresa un precio válido.</div>
                 </div>
-                <?php echo("<ul>") ?>
-                        <?php foreach ($viajes as $viaje): ?>
-                            <?php
-                            echo ("<li>");
-                            $viajes -> origen | $viajes -> destino | $viajes -> hora | $viajes -> fecha;
-                            echo ("</li>");
-                            ?>
-                         <?php echo("</ul>") ?>
-                        <?php endforeach; ?>
+                        <?php if (!empty($viaje) && is_array($viaje)): ?>
+            <ul>
+                <?php foreach ($viaje as $viajes): ?>
+                    <li>
+                        <?php echo "{$viajes->origen} | {$viajes->destino} | {$viajes->hora} | {$viajes->fecha}"; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>No hay viajes disponibles.</p>
+        <?php endif; ?>
                 </div>
 
 
