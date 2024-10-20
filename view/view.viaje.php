@@ -1,8 +1,17 @@
 <?php
 
 class ViajeView {
+    function ShowHome(){
+        require_once './templates/header.phtml';
+        require_once './templates/inicio.phtml';
+        require_once './templates/footer.phtml';
+    }
     function ShowViaje($viajes) {
+<<<<<<< HEAD
         require_once "templates/viaje/formulario.phtml";  //  cargamos la lista de viajes
+=======
+        require_once "templates/viaje/formlistar.php";  //  cargamos la lista de viajes
+>>>>>>> 3681eacee5bda2e84cd58bd18b4c53e72f4a2aab
     }
 
     function Error($msg) {

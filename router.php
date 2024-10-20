@@ -1,5 +1,6 @@
 <?php
- require_once 'controller/viaje.controller.php';
+ require_once './controller/viaje.controller.php';
+ require_once './templates/inicio.phtml';
 
  define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
