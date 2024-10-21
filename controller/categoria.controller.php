@@ -2,7 +2,7 @@
 require_once 'model/categoria.model.php';
 require_once 'view/view.categoria.php';
 
-/*class CategoriaController {
+class CategoriaController {
     private $model;
     private $view;
 
@@ -11,11 +11,16 @@ require_once 'view/view.categoria.php';
         $this->view = new CategoriaView();
     }
 
-    public function listarCategorias() {
-        $categorias = $this->model->getCategoria();
-        $this->view->showCategorias($categorias);
-    }
+    public function mostraCategoria()
+    {
+        $categoria = $this->model->getCategoria();
 
+        if (!$categoria) {
+            return $this->view->mostrarErrores("No hay viajes disponibles");
+        }
+        return $this->view->mostrarCategoria($categoria);
+    }
+/*
     public function agregarCategoria() {
         $temporada = $_POST['temporada'];
         $empresa = $_POST['empresa'];
@@ -58,7 +63,7 @@ require_once 'view/view.categoria.php';
             // Manejar caso en que la categoría no se encuentra
             header("Location: " . BASE_URL . "categorias");
         }
-    }
+    }*/
     }
 
-?>*/
+?>

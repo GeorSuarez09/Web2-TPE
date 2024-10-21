@@ -2,60 +2,27 @@
 
 <div>
     <h1>Agregar Nuevo Viaje</h1>
-    
-    <div>
-        <div>
-            <form action="agregar" method="POST" novalidate>
-                
-         <!-- ORIGEN -->
-                <div class="col1">
-                    <label for="origen" class="form-label">Origen, Destino de inicio</label>
-                    <input type="text" id="origen" name="Origen" placeholder="Ingrese su origen:" required>
-                    <div>Por favor, ingresa un origen válido.</div>
-                </div>
-
-                <!-- DESTINO -->
-                <div class="col1">
-                    <label for="destino">Destino</label>
-                    <input type="text"  id="destino" name="Destino" placeholder="Ingrese su destino:" required>
-                    <div>Por favor, ingresa un destino de fin válido.</div>
-                </div>
-
-                <!-- Fecha de Viaje -->
-                <div class="col1">
-                    <label for="fecha" >Fecha de Viaje</label>
-                    <input type="date" id="fecha" name="Fecha" required>
-                    <div class="invalid-feedback">Por favor, selecciona una fecha de viaje válida.</div>
-                </div>
-
-                <!-- Precio del Viaje -->
-                <div class="col1">
-                    <label for="hora">Horario</label>
-                    <input type="number"  id="hora" name="hora" placeholder="Ingrese precio en pesos" required>
-                    <div class="invalid-feedback">Por favor, ingresa un precio válido.</div>
-                </div>
-                        <?php if (!empty($viaje) && is_array($viaje)): ?>
-            <ul>
-                <?php foreach ($viaje as $viajes): ?>
-                    <li>
-                        <?php echo "{$viajes->origen} | {$viajes->destino} | {$viajes->hora} | {$viajes->fecha}"; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php else: ?>
-            <p>No hay viajes disponibles.</p>
-        <?php endif; ?>
-                </div>
-
-
-                <!-- Botón de envío -->
-                <div class="col1">
-                    <button class="btn-agregar" type="submit">Agregar Viaje</button>
-                </div>
-
-            </form>
+    <form action="<?= BASE_URL ?>agregar" method="POST" novalidate>
+        <div class="col1">
+            <label for="origen">Origen</label>
+            <input type="text" id="origen" name="Origen" required>
         </div>
-    </div>
+        <div class="col1">
+            <label for="destino">Destino</label>
+            <input type="text" id="destino" name="Destino" required>
+        </div>
+        <div class="col1">
+            <label for="fecha">Fecha de Viaje</label>
+            <input type="date" id="fecha" name="Fecha" required>
+        </div>
+        <div class="col1">
+            <label for="hora">Horario</label>
+            <input type="number" id="hora" name="Hora" required>
+        </div>
+        <div class="col1">
+            <button type="submit">Agregar Viaje</button>
+        </div>
+    </form>
 </div>
 
 <?php require_once 'templates/footer.phtml'; ?>

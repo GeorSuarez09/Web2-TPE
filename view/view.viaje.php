@@ -1,12 +1,14 @@
 <?php
 
 class ViajeView {
-  /*  function ShowHome(){
-        echo "Cargo pagina de inicio";
-        require_once './templates/header.phtml';
-        require_once './templates/footer.phtml';
-    }*/
-    function ShowViaje($viajes) {
+
+
+    function mostrarFormulario() {
+        require_once 'templates/header.phtml'; // Incluye el encabezado
+        require_once 'templates/formulario.phtml'; // Incluye el formulario
+        require_once 'templates/footer.phtml'; // Incluye el pie de página
+    }
+    function MostrarViaje($viajes) {
         if (empty($viajes)) {
             echo "<p>No hay viajes disponibles.</p>";
         } else {
@@ -14,11 +16,11 @@ class ViajeView {
         }
     }
 
-   /* function Error($msg) {
-        echo "<h1>ERROR</h1>";
-        echo "<h2>$msg</h2>";
+    function mostrarErrores($errores) {
+        require_once './templates/errores.phtml'; // Asegúrate de incluir el encabezado
+    
     }
-
+/*
     function showEditarViaje($viajes) {
         require_once './templates/viaje/formeditar.phtml';  //  cargamos el formulario de edición
     }

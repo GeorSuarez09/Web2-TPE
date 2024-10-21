@@ -12,21 +12,17 @@ if (!empty($_GET['action'])) {
 //Parsea la accion para separar accion real de parametros
 $params = explode ('/' , $action);
 
-switch($params[0]) {
-    case 'listar':
-        $controller = new viajeController;
+switch ($params[0]) {
+   /* case 'listar':
+        $controller = new viajeController();
         $controller->listarViaje();
-        break;
- /*   case 'agregar':
-        $controller = new viajeController;
-        $controller->addViaje();
-        break;
-    case 'eliminar':
+        break;*/    
+     case 'eliminar':
         $controller = new viajeController;
         $id = $params[1];
         $controller->eliminarViaje($id);
         break;
-    case 'editar':
+   /* case 'editar':
         $controller = new viajeController;
         $id = $params[1];
         $controller->editarViaje($id);

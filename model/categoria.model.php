@@ -1,6 +1,6 @@
 <?php
 require_once './model/model.php';
-/*
+
 class CategoryModel extends Model {
  
     public function getCategoria() {
@@ -8,9 +8,9 @@ class CategoryModel extends Model {
         $query = $this->db->prepare('SELECT * FROM categoria');
         $query->execute();
     
-        $categorys = $query->fetchAll(PDO::FETCH_OBJ); 
+        $categorias= $query->fetchAll(PDO::FETCH_OBJ); 
     
-        return $categorys;
+        return $categorias;
     }
  //Obbtengo categoria por ID
     public function getCategory($id) {    
@@ -22,7 +22,7 @@ class CategoryModel extends Model {
         return $categoria;
     }
 
- 
+ /*
     public function insertoCategoria($temporada, $empresa, $comodidad) { 
         $query = $this->db->prepare('INSERT INTO categoria(temporada, empresa, comodidad) VALUES (?, ?, ?)');
         $query->execute([$temporada, $empresa, $comodidad]);
@@ -42,6 +42,6 @@ class CategoryModel extends Model {
     public function eliminarCategoria($id) {
         $query = $this->db->prepare('DELETE FROM categoria WHERE ID_categoria = ?');
         $query->execute([$id]);
-    }
+    }*/
 }
-?>*/
+?>

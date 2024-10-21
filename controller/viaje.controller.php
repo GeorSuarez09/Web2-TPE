@@ -12,34 +12,47 @@ class viajeController
     $this->model = new ViajeModel();
     $this->view = new ViajeView();
   }
-  function listarViaje() {
-    $viaje = $this->model->getViaje();
-    
-  
-    
-    $this->view->ShowViaje($viaje);
-}
-
- /* function addViaje()
-  {
-    $origen = $_POST['Origen'];
-    $destino = $_POST['Destino'];
-    $fecha = $_POST['Fecha'];
-    $hora = $_POST['Hora'];
-
-    //Verifico campos obligatorios
-    if (empty($origen) || empty($destino) || empty($fecha) || empty($hora)) {
-     $this->view->Error('Faltan campos obligatorios');
+  public function listarViaje(){
+    $viaje = $this->model->getViaje();            
+    if(!$viaje){
+        return $this->view->mostrarErrores("No hay personas disponibles");
     }
+    return $this->view->MostrarViaje($viaje);
+}
+/*public function mostrarFormulario() {
+  $this->view->mostrarFormulario(); // Llama a la vista para mostrar el formulario
+}
+public function addViaje() {
+  // Verifica si se ha enviado el formulario
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      // Verifica que los campos obligatorios estén completos
+      if (!isset($_POST['Origen']) || empty($_POST['Origen']) ||
+          !isset($_POST['Destino']) || empty($_POST['Destino']) ||
+          !isset($_POST['Fecha']) || empty($_POST['Fecha']) ||
+          !isset($_POST['Hora']) || empty($_POST['Hora'])) {
+          return $this->view->mostrarErrores('Falta completar todos los campos obligatorios');
+      }
 
-    //Inserto la tarea en la bd
-    $this->model->agregarViaje($origen, $destino, $fecha, $hora);
+      // Asigna las variables correctamente
+      $origen = $_POST['Origen'];
+      $destino = $_POST['Destino'];
+      $fecha = $_POST['Fecha'];
+      $hora = $_POST['Hora'];
 
-    //Redirigimos al listado
-    header("Location:" . BASE_URL);
+      // Agrega el viaje a la base de datos
+      $this->model->agregarViaje($fecha, $hora, $origen, $destino);
+
+      // Redirige al listado de viajes
+      header('Location: ' . BASE_URL . 'listar');
+      exit;
   }
 
-  function editarViaje($id) {
+  // Si no es POST, muestra el formulario
+  $this->view->mostrarFormulario();
+}*/
+
+
+  /*function editarViaje($id) {
     // Obtiene el viaje que se quiere editar
     $viaje = $this->model->getViajeById($id);
   
@@ -63,11 +76,15 @@ function updateViaje() {
   // Actualiza el viaje en la BD
   $this->model->editarViaje($fecha, $hora, $origen, $destino, $id);
   header("Location:" . BASE_URL);
-}
+}*/
 
-  function eliminarViaje($id){
-      $this->model->deleteViaje($id);
-      header('Location:' . BASE_URL);
-  }*/
+public function eliminarViaje($id){
+  $viaje = $this->model->getViajeById($id);
+  if (!$viaje) {
+      return $this->view->mostrarErrores("No existe la viaje con el id=$id");
+  }
+  $this->model->deleteViaje($id);
+  header('Location: ' . BASE_URL . 'listarViaje');
+}
 }
 ?>
