@@ -1,6 +1,6 @@
 <?php
 require_once './model/model.php';
-
+/*
 class CategoryModel extends Model {
  
     public function getCategoria() {
@@ -44,4 +44,4 @@ class CategoryModel extends Model {
         $query->execute([$id]);
     }
 }
-?>
+?>*/

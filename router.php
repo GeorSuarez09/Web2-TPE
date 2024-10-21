@@ -1,6 +1,6 @@
 <?php
  require_once './controller/viaje.controller.php';
- require_once './templates/inicio.phtml';
+ 
 
  define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -17,7 +17,7 @@ switch($params[0]) {
         $controller = new viajeController;
         $controller->listarViaje();
         break;
-    case 'agregar':
+ /*   case 'agregar':
         $controller = new viajeController;
         $controller->addViaje();
         break;
@@ -34,10 +34,10 @@ switch($params[0]) {
     case 'update':
         $controller = new viajeController;
         $controller->updateViaje();
-        break;
+        break;*/
 
     // Rutas para categorías
-    case 'categorias':
+   /* case 'categorias':
         $controller = new CategoriaController();
         $controller->listarCategorias(); // Método para listar categorías
         break;
@@ -58,7 +58,7 @@ switch($params[0]) {
     case 'update_categoria':
         $controller = new CategoriaController();
         $controller->updateCategoria(); // Método para actualizar categoría
-        break;
+        break;*/
 
     default:
         // Manejar caso por defecto

@@ -1,6 +1,6 @@
 <?php
     const MYSQL_USER = 'root';
     const MYSQL_PASS = '';
-    const MYSQL_DB = 'viaje_at';
+    const MYSQL_DB = 'viajes_at';
     const MYSQL_HOST = 'localhost';
 ?>

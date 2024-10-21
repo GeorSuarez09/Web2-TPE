@@ -17,7 +17,7 @@
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
     //Obtengo viaje por ID
-    public function getViajeById($id) {
+    /*public function getViajeById($id) {
         $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
         $query->execute([$id]);
         return $query->fetch(PDO::FETCH_OBJ);
@@ -39,6 +39,6 @@
     public function deleteViaje($id) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
         $query->execute([$id]); //evitar la inyeccion SQL
-    }
+    }*/
 }
     ?>

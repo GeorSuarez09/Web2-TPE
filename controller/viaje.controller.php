@@ -12,16 +12,15 @@ class viajeController
     $this->model = new ViajeModel();
     $this->view = new ViajeView();
   }
-  function listarViaje()
-  {
-    //Obtiene los viajes del modelo 
+  function listarViaje() {
     $viaje = $this->model->getViaje();
-
-    //Actualizar vista
+    
+  
+    
     $this->view->ShowViaje($viaje);
-  }
+}
 
-  function addViaje()
+ /* function addViaje()
   {
     $origen = $_POST['Origen'];
     $destino = $_POST['Destino'];
@@ -43,6 +42,7 @@ class viajeController
   function editarViaje($id) {
     // Obtiene el viaje que se quiere editar
     $viaje = $this->model->getViajeById($id);
+  
     // Muestra la vista de edición
    $this->view->showEditarViaje($viaje);
 }
@@ -56,7 +56,7 @@ function updateViaje() {
 
   // Verifico campos obligatorios
   if (empty($origen) || empty($destino) || empty($fecha) || empty($hora)) {
-   //   $this->view->Error('Faltan campos obligatorios');
+      $this->view->Error('Faltan campos obligatorios');
       return;
   }
 
@@ -68,5 +68,6 @@ function updateViaje() {
   function eliminarViaje($id){
       $this->model->deleteViaje($id);
       header('Location:' . BASE_URL);
-  }
+  }*/
 }
+?>

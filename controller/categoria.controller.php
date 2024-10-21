@@ -2,7 +2,7 @@
 require_once 'model/categoria.model.php';
 require_once 'view/view.categoria.php';
 
-class CategoriaController {
+/*class CategoriaController {
     private $model;
     private $view;
 
@@ -61,4 +61,4 @@ class CategoriaController {
     }
     }
 
-?>
+?>*/

@@ -1,5 +1,5 @@
 <?php
-
+/*
 class CategoriaView {
     public function showCategorias($categorias) {
         require_once "templates/categoria/categorialist.phtml";
@@ -12,5 +12,5 @@ class CategoriaView {
     public function showEliminarCategoria($categoria) {
         require_once "templates/categoria/formdelete.phtml";
     }
-}
+}*/
 ?>
