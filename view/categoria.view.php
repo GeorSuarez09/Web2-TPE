@@ -1,20 +1,22 @@
 <?php
-
-class CategoriaView {
-    public function mostrarCategoria($categorias) {
-        require_once "templates/categoria/categorialistar.phtml";
+class categoriaView{
+    // mostrar DB
+    public function mostrarCategoria($categoria){
+        // traigo el PHTL del listado;
+        require_once 'templates/categoria/listacategoria.phtml';
     }
+    public function listadoCategoria($categoria) {
+        require_once 'templatesviaje/detalle.phtml';
 
-    public function showEditarCategoria($categoria) {
-        require_once "templates/categoria/formeditar.phtml";
     }
-
-    public function showEliminarCategoria($categoria) {
-        require_once "templates/categoria/formdelete.phtml";
+    public function mostrarformCategoria(){
+        require_once 'templates/categoria/formularioC.phtml';
     }
-    function mostrarErrores($errores) {
-        require_once './templates/errores.phtml'; // Asegúrate de incluir el encabezado
-    
+    public function mostrarformEditCategoria($ID_categoria, $categoria){
+        require_once 'templates/categoria/modificarC.phtml';
+    }
+    // mostrar errores
+    public function mostrarErrores($errores){
+        require_once 'templates/categoria/errores.phtml';
     }
 }
-?>

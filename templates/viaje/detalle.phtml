@@ -1,0 +1,20 @@
+<?php require_once 'templates/header.phtml'; ?>
+
+<div class="container mt-5">
+    <h2 class="display-6 text-center mb-4">Detalles del Viaje</h2>
+
+    <div class="card">
+        <div>
+            <ul>
+                <li ><strong>Fecha de salida:</strong> <?= $viaje->Fecha ?></li>
+                <li><strong>Hora de salida:</strong> <?= $viaje->Hora ?></li>
+                <li><strong>Origen:</strong> <?= $viaje->Origen ?></li>
+                <li ><strong>Destino:</strong> $<?= $viaje->Destino ?></li>
+                <li><strong>Temporada:</strong> <?=$categoria->temporada?></li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<?php require_once 'templates/footer.phtml'; ?>

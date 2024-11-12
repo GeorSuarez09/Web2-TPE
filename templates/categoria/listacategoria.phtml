@@ -1,0 +1,33 @@
+<?php require_once 'templates/header.phtml'; ?>
+
+<div>
+    <h1>Listado de Categoria</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Temporda</th>
+                <th>Empresa</th>
+                <th>Comodidad</th>     
+           </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($categorias as $categoria): ?> 
+    <tr>
+        <td><?php echo $categoria->temporada; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
+        <td><?php echo $categoria->empresa; ?></td>
+        <td><?php echo $categoria->comodidad; ?></td>
+        <td>
+            <a href="editarCategoria/<?php echo $viaje->ID_viaje; ?>">Editar Categoria</a>
+            <a href="eliminarCategoria/<?php echo $viaje->ID_viaje; ?>">Eliminar</a>
+        </td>
+        <td>
+            <a href="<?= BASE_URL ?>verMasCategoria/<?= $categoria->ID_categoria ?>">Ver Más</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+
+<?php require_once 'templates/footer.phtml'; ?>
