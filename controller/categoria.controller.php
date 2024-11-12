@@ -20,22 +20,33 @@ class CategoriaController {
         }
         return $this->view->mostrarCategoria($categoria);
     }
-/*
+    public function formCategorias(){
+     // $categoria = $this->model->insertoCategoria();
+     //  $this->view->formCategoria();
+    }
+
     public function agregarCategoria() {
         $temporada = $_POST['temporada'];
         $empresa = $_POST['empresa'];
         $comodidad = $_POST['comodidad'];
 
         if (empty($temporada) || empty($empresa) || empty($comodidad)) {
-            $this->view->showEliminarCategoria('Faltan campos obligatorios');
+            $this->view->mostrarErrores('Faltan campos obligatorios');
             return;
         }
 
         $this->model->insertoCategoria($temporada, $empresa, $comodidad);
         header("Location: " . BASE_URL . "categorias");
     }
+    public function formEditarCategoria($id){
+        $categoria = $this->model->getCategory($id);
 
-    public function editarCategoria($id) {
+        if(!$categoria){
+            return $this->view->mostrarErrores('la persona que esta buscando no esta disponible');
+        }
+        $this->view->formEditarCategoria($id, $categoria);
+    }
+  /*  public function editarCategoria($id) {
         $categoria = $this->model->getCategory($id);
         $this->view->showEditarCategoria($categoria);
     }

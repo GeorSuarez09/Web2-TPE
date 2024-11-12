@@ -12,12 +12,24 @@ class viajeController
     $this->model = new ViajeModel();
     $this->view = new ViajeView();
   }
-  public function listarViaje(){
+  public function mostrarViajes(){
     $viaje = $this->model->getViaje();            
     if(!$viaje){
         return $this->view->mostrarErrores("No hay personas disponibles");
     }
-    return $this->view->MostrarViaje($viaje);
+    return $this->view->mostrarViaje($viaje);
+}
+
+public function mostrarViaje($id)
+{
+    $viaje = $this->model->getViajeById($id);
+
+    if (!$viaje) {
+        return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $id");
+    }
+    $id = $viaje->ID_viaje;
+    //$persona = $this->model->verPersona($id);
+   // return $this->view->viajeDetalles($viaje, $categoria);
 }
 /*public function mostrarFormulario() {
   $this->view->mostrarFormulario(); // Llama a la vista para mostrar el formulario
