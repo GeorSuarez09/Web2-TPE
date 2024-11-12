@@ -1,21 +1,52 @@
 <?php require 'templates/header.phtml'; ?>
 
+<div class="container mt-5">
+    <h2 class="display-6 text-center mb-4">Detalles del Viaje</h2>
+
+    <div class="card">
+        <div>
+            <ul>
+                <li><strong>Fecha de salida:</strong> <?= $viaje->Fecha ?></li>
+                <li><strong>Hora de salida:</strong> <?= $viaje->Hora ?></li>
+                <li><strong>Origen:</strong> <?= $viaje->Origen ?></li>
+                <li><strong>Destino:</strong> <?= $viaje->Destino ?></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div>
     <h1>Editar Viaje</h1>
-    <form method="POST" action="update">
+    <form method="POST" action="<?= BASE_URL ?>update/<?= $id ?>">
         <input type="hidden" name="id" value="<?php echo $viaje->ID_viaje; ?>">
-        
-        <label>Origen:</label>
-        <input type="text" name="Origen" value="<?php echo $viaje->Origen; ?>" required>
-        
-        <label>Destino:</label>
-        <input type="text" name="Destino" value="<?php echo $viaje->Destino; ?>" required>
-        
-        <label>Fecha:</label>
-        <input type="date" name="Fecha" value="<?php echo $viaje->Fecha; ?>" required>
-        
-        <label>Hora:</label>
-        <input type="time" name="Hora" value="<?php echo $viaje->Hora; ?>" required>
+
+        <!-- Campo para editar el Origen -->
+        <label for="Origen">Origen:</label>
+        <input type="text" name="Origen" id="Origen" value="<?php echo $viaje->Origen; ?>" required>
+
+        <!-- Campo para editar el Destino -->
+        <label for="Destino">Destino:</label>
+        <input type="text" name="Destino" id="Destino" value="<?php echo $viaje->Destino; ?>" required>
+
+        <!-- Campo para editar la Fecha -->
+        <label for="Fecha">Fecha:</label>
+        <input type="date" name="Fecha" id="Fecha" value="<?php echo $viaje->Fecha; ?>" required>
+
+        <!-- Campo para editar la Hora -->
+        <label for="Hora">Hora:</label>
+        <input type="time" name="Hora" id="Hora" value="<?php echo $viaje->Hora; ?>" required>
+
+         <!-- Campo para editar la Categoría -->
+         <label for="ID_categoria">Temporada:</label>
+            <select name="ID_categoria" required>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria->ID_categoria ?>">
+                    <option value="1" <?php if ($viaje->ID_categoria == 1) echo "selected"; ?>>Categoría 1</option>
+                    <option value="2" <?php if ($viaje->ID_categoria == 2) echo "selected"; ?>>Categoría 2</option>
+                </option>
+                <?php endforeach; ?>
+            </select>
+        </div> 
 
         <button type="submit">Actualizar</button>
     </form>

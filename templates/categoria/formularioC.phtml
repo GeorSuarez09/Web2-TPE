@@ -1,0 +1,35 @@
+<?php require 'templates/header.phtml'; ?>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Agregar Categoria</h1>
+    
+    <div class="card">
+        <div>
+            <form action="agregarCategoria" method="POST" novalidate>
+                <div class="col-md-4">
+                    <label for="temporadaa">Temporada</label>
+                    <input type="text" id="temporadaa" name="temporada" required>
+                    <div>Por favor, ingresa una temporada válida.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="empresaa">Empresa</label>
+                    <input type="text" id="empresaa" name="empresa" required>
+                    <div>Por favor, ingresa un empresa válida.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="comodidadd">Comodidad</label>
+                    <input type="text" id="comodidadd" name="comoidad" required>
+                    <div class="invalid-feedback">Por favor, ingresa una comodidad válida.</div>
+                </div>
+
+                <div>
+                    <button type="submit">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php require 'templates/footer.phtml'; ?>

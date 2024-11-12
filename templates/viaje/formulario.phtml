@@ -3,15 +3,7 @@
 <div>
     <h1>Agregar Nuevo Viaje</h1>
     <form action="<?= BASE_URL ?>agregar" method="POST" novalidate>
-        <div class="col1">
-            <label for="origen">Origen</label>
-            <input type="text" id="origen" name="Origen" required>
-        </div>
-        <div class="col1">
-            <label for="destino">Destino</label>
-            <input type="text" id="destino" name="Destino" required>
-        </div>
-        <div class="col1">
+    <div class="col1">
             <label for="fecha">Fecha de Viaje</label>
             <input type="date" id="fecha" name="Fecha" required>
         </div>
@@ -20,6 +12,26 @@
             <input type="number" id="hora" name="Hora" required>
         </div>
         <div class="col1">
+            <label for="origen">Origen</label>
+            <input type="text" id="origen" name="Origen" required>
+        </div>
+        <div class="col1">
+            <label for="destino">Destino</label>
+            <input type="text" id="destino" name="Destino" required>
+        </div>
+
+        <div class="col1">
+      <!-- CATEGORIAS-->
+      <label for="ID_categoria">Categoria:</label>
+            <select name="ID_categoria" required>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria->ID_categoria ?>"></option>
+                    <option value="1" <?php if ($viaje->ID_categoria == 1) echo "selected"; ?>>Categoría 1</option>
+                    <option value="2" <?php if ($viaje->ID_categoria == 2) echo "selected"; ?>>Categoría 2</option>
+                <?php endforeach; ?>
+            </select>
+        </div>  
+
             <button type="submit">Agregar Viaje</button>
         </div>
     </form>
