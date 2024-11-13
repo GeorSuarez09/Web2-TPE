@@ -22,7 +22,7 @@ class ViajeView {
         require_once './templates/viaje/errores.phtml'; // Asegúrate de incluir el encabezado
     }
     public function mostrarViajeXCategoria($viajes, $categoria){
-        require_once 'templates/viajes/tabla.viaje.phtml';
+        require_once 'templates/viaje/tabla.viaje.phtml';
     }
  }
 ?>

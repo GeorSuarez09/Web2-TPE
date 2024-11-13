@@ -12,15 +12,33 @@ if (!empty($_GET['action'])) {
 // Parseo la acción para separar acción real de parámetros
 $params = explode('/', $action);
 
+
+/*
+listarViajes -->         viajeController() -> mostrarViajes()
+verMasViajes/:ID -->     viajeController() -> mostrarViaje($params[1])
+formularioViajes -->     viajeController() -> mostrarformViajes()
+agregar -->              viajeController() -> addViaje()
+delete/:ID -->           viajeController() -> eliminarViaje($params[1])
+editarViaje/:ID -->      viajeController() ->mostrarFormEditViaje($params[1])
+update/:ID -->           viajeController() -> updateViajes($params[1])
+
+mostrarCategoria -->           categoriaController() ->mostrarCategorias()
+eliminarCategoria/:ID -->      categoriaController() -> borrarCategoria($params[1])
+formularioCategoria -->        categoriaController() -> mostrarformCategorias()
+agregarCategoria -->           categoriaController() -> agregarCategoria()
+mostrarFomEditCategoria/:ID--> categoriaController() -> mostrarFormEditCategoria($params[1])
+editarCategoria/:ID -->        categoriaController() -> modificarCategoria($params[1])
+
+viajePorCategoria/:ID -->          viajeController() -> verViajeXCategoria($params[1])
+*/
+
 switch ($params[0]) {
     case 'listarViajes':
-        // Se crea una instancia del controlador antes de llamar al método
         $controller = new viajeController();
         $controller->mostrarViajes();
         break;
         
     case 'verMasViajes':
-        // Se asegura de que el controlador esté instanciado
         $controller = new viajeController();
         $controller->mostrarViaje($params[1]); // $params[1] es el ID del viaje
         break;
@@ -76,10 +94,14 @@ switch ($params[0]) {
         $controller = new categoriaController();
         $controller->modificarCategoria($params[1]);
         break;
-    default:
-        // Manejar caso por defecto
-        break;
-}
+        case 'viajePorCategoria':
+            $controller = new viajeController();
+            $controller->verViajeXCategoria($params[1]);
+           break;
+        default:
+          echo "La pagina que busca no esta disponible";
+            break;
+        }
     
 
 ?>

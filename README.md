@@ -1,21 +1,46 @@
-INTEGRANTES: Suarez georgina naira -  Ferreyra zaira melina
+INTEGRANTES
+Suarez Georgina Naira 
+Ferreyra Zaira Melina 
 
-Mi base de datos para el trabajo práctico de viajes se estructura en dos tablas relacionadas:
-CATEGORIA:
-Tabla Usuario: Esta tabla almacena información sobre los usuarios que realizan viajes. Las columnas que contiene son:
-id_usuario: Un identificador único para cada usuario.
-nombre: El nombre del usuario.
-dni: El Documento Nacional de Identidad del usuario.
-gmail: La dirección de correo electrónico del usuario.
-ITEM:
-Tabla Viajes: Esta tabla guarda los detalles de los viajes realizados por los usuarios. Las columnas son:
-id_viaje: Un identificador único para cada viaje.
-fecha: La fecha en la que se realizó el viaje.
-hora: La hora en la que comenzó el viaje.
-origen: El lugar de partida del viaje.
-destino: El lugar de llegada del viaje.
-id_usuario: Esta columna es la clave foránea que conecta cada viaje con un usuario específico, haciendo referencia al campo id_usuario de la tabla Usuario.
+Descripcion del Proyecto
+Nuestro sitio Web esta diseñada para:
+📅 Gestionar reservas de viajes en una interfaz amigable y dinámica.
+📋 Consultar información detallada de cada categoria y sus viajes.
 
-Relación entre las tablas:
-La relación entre estas dos tablas es a través de la columna id_usuario en ambas tablas. Esto permite asociar cada viaje a un usuario, creando una relación de uno a muchos (un usuario puede tener varios viajes, pero un viaje pertenece a un solo usuario).
-Este diseño permite almacenar la información de los usuarios y sus respectivos viajes de manera organizada y relacionada, facilitando consultas como "ver todos los viajes de un usuario específico" o "saber qué usuario realizó un determinado viaje".
+La base de datos esta compuesta por:
+1. Viajes: Informacion del viaje(Fecha, Hora, Origen Destino, ID_viaje y ID_categoria)
+2. Categoria: Informacion detallada del viaje para el cliente (Temporada, Empresa, Comodidad y ID_categoria)
+3. Usuario: Usuario pueda loguerase y desloguearse (Id, Gmail y password)
+Realizamos la tabla Categoria porque sino la tabla Usuario tenia que cumplir el rol de poder loguerse y desloguarse, y al mismo tiempo cumplir con la funcion Categoria! 
+
+
+---------------------------------
+Acceso Público 🌐
+Navegación libre para los usuarios.
+
+🔗 Listado de Viajes: Muestra todos los viajes disponibles.
+URL: /listarViajes
+
+🔗 Detalle de Viaje: Información completa de cada viaje.
+URL: /verMasViajes/:ID
+
+🔗 Listado de Categorias: Visualización de las categorias registradas.
+URL: /mostrarCategoria
+
+🔗 Viajes por Categorias: Ver los viajes realizados incluyendo las categorias.
+URL: /viajePorCategoria/:ID
+
+
+----------------------------------
+⚙️ Administración de Datos (ABM)
+Administración de Viajes ⚙️
+Listar Viajes: URL: /listarViajes
+Agregar Viaje: URL: /formularioViajes
+Editar Viaje: URL: /editarViaje/:ID
+Eliminar Viaje: URL: /eliminarViaje/:ID
+
+Administración de Categoria ⚙️
+Listar Categoria: URL: /mostrarCategoria
+Agregar Categoria: URL: /formularioCategoria
+Editar Categoria: URL: /mostrarFormEditCategoria/:ID
+Eliminar Categoria: URL: /eliminarCategoria/:ID
