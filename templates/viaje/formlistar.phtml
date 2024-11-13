@@ -12,6 +12,20 @@
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
+            <?php foreach ($viajes as $viaje): ?> 
+                <tr>
+                    <td><?php echo $viaje->Origen; ?></td> <!-- Acceder correctamente a las propiedades -->
+                    <td><?php echo $viaje->Destino; ?></td>
+                    <td><?php echo $viaje->Fecha; ?></td>
+                    <td><?php echo $viaje->Hora; ?></td>
+                    <td>
+                        <a href="editar/<?php echo $viaje->ID_viaje; ?>">Editar</a>
+                        <a href="eliminar/<?php echo $viaje->ID_viaje; ?>">Eliminar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+=======
         <?php foreach ($viajes as $viaje): ?> 
     <tr>
         <td><?php echo $viaje->Fecha; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
@@ -27,6 +41,7 @@
         </td>
     </tr>
 <?php endforeach; ?>
+>>>>>>> 880753fe2106a3026170a6b6b9bf60810b437ed5
         </tbody>
     </table>
 </div>
