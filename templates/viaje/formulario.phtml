@@ -22,11 +22,11 @@
 
         <div class="col1">
       <!-- CATEGORIAS-->
-      <label for="ID_categoria">Categoria:</label>
-            <select name="ID_categoria" required>
-                <?php foreach ($categorias as $categoria): ?>
-                    <option value="<?= $categoria->ID_categoria ?>"></option>
+      <label for="id_cateoria">Categorias:</label>
+            <select name="id_categoria" required>
+                <?php foreach ($categoria as $categorias): ?>
                    
+                    <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?></option>
                 <?php endforeach; ?>
             </select>
         </div>  

@@ -30,7 +30,7 @@ class categoriaController{
         $ID_categoria= $this->model->verCategoriaById($ID_categoria);
  }
     public function mostrarformCategorias(){
-        //$viaje = $this->modelo->verViajes();
+       // $this -> model ->agregarCategoria($temporada, $empresa, $comodidad);
         $this->view->mostrarformCategoria();
     }
 

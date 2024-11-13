@@ -10,6 +10,7 @@ class ViajeView {
         require_once './templates/viaje/detalle.phtml';
     }
     public function mostrarformViajes($categoria){
+
       require_once './templates/viaje/formulario.phtml';
     }
     public function formEditViaje($ID_viaje, $viaje, $categoria, $categorias){

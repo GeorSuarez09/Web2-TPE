@@ -29,7 +29,7 @@ public function getCategorias(){
 }
 
 public function verCategoriaById($ID_categoria){
-   $query = $this->db->prepare('SELECT * FROM categoria WHERE ID_categoria = ?');
+   $query = $this->db->prepare('SELECT * FROM categoria WHERE id = ?');
    $query->execute([$ID_categoria]);      
    $categoria = $query->fetch(PDO::FETCH_OBJ);    
    return $categoria;
@@ -47,14 +47,14 @@ public function verCategoriaById($ID_categoria){
 
     // editar de la DB
     public function editarCategoria($ID_categoria, $temporada, $empresa, $comodidad) { 
-        $query = $this->db->prepare('UPDATE categoria SET temporada = ?, empresa = ?, comodidad = ? WHERE ID_categoria = ?');
+        $query = $this->db->prepare('UPDATE categoria SET temporada = ?, empresa = ?, comodidad = ? WHERE id = ?');
         $query->execute([$ID_categoria, $temporada, $empresa, $comodidad]);
     }
     
     
     // borrar de la DB
     public function borrarCategoria($ID_categoria){
-        $query = $this->db->prepare('DELETE FROM categoria WHERE ID_categoria = ?');
+        $query = $this->db->prepare('DELETE FROM categoria WHERE id = ?');
         $query->execute([$ID_categoria]);
     }
 
