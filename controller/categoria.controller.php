@@ -18,47 +18,20 @@ class categoriaController{
         }
         return $this->view->mostrarCategoria($categoria);
     }
-<<<<<<< HEAD
-    public function formCategorias(){
-     // $categoria = $this->model->insertoCategoria();
-     //  $this->view->formCategoria();
-    }
-
-    public function agregarCategoria() {
-        $temporada = $_POST['temporada'];
-        $empresa = $_POST['empresa'];
-        $comodidad = $_POST['comodidad'];
-
-        if (empty($temporada) || empty($empresa) || empty($comodidad)) {
-            $this->view->mostrarErrores('Faltan campos obligatorios');
-            return;
-=======
 
     public function mostrarPersona($ID_categoria){
         $categoria = $this->model->verCategoriaById($ID_categoria);        
         if(!$categoria){
             return $this->view->mostrarErrores("No se a encontrado la categoria con la id: $ID_categoria");
->>>>>>> 880753fe2106a3026170a6b6b9bf60810b437ed5
         }
         return $this->view->listadoCategoria($categoria);
     }
-    public function formEditarCategoria($id){
-        $categoria = $this->model->getCategory($id);
-
-<<<<<<< HEAD
-        if(!$categoria){
-            return $this->view->mostrarErrores('la persona que esta buscando no esta disponible');
-        }
-        $this->view->formEditarCategoria($id, $categoria);
-    }
-  /*  public function editarCategoria($id) {
-        $categoria = $this->model->getCategory($id);
-        $this->view->showEditarCategoria($categoria);
-=======
+    public function formEditarCategoria($ID_categoria){
+        $ID_categoria= $this->model->verCategoriaById($ID_categoria);
+ }
     public function mostrarformCategorias(){
         //$viaje = $this->modelo->verViajes();
         $this->view->mostrarformCategoria();
->>>>>>> 880753fe2106a3026170a6b6b9bf60810b437ed5
     }
 
     public function agregarCategoria(){
@@ -115,3 +88,4 @@ header('Location: ' . BASE_URL);
         header('Location: ' . BASE_URL );
     }
 }
+ 

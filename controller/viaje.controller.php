@@ -12,26 +12,6 @@ class viajeController
     $this->model = new ViajeModel();
     $this->view = new ViajeView();
   }
-<<<<<<< HEAD
-  public function mostrarViajes(){
-    $viaje = $this->model->getViaje();            
-    if(!$viaje){
-        return $this->view->mostrarErrores("No hay personas disponibles");
-    }
-    return $this->view->mostrarViaje($viaje);
-}
-
-public function mostrarViaje($id)
-{
-    $viaje = $this->model->getViajeById($id);
-
-    if (!$viaje) {
-        return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $id");
-    }
-    $id = $viaje->ID_viaje;
-    //$persona = $this->model->verPersona($id);
-   // return $this->view->viajeDetalles($viaje, $categoria);
-=======
   public function mostrarViajes() {
     $viajes = $this->model->getViaje();  // Obtienes los viajes de la base de datos
    
@@ -41,7 +21,6 @@ public function mostrarViaje($id)
 
     // Pasa los viajes a la vista (a la plantilla 'formlistar.phtml')
     return $this->view->showViaje($viajes); 
->>>>>>> 880753fe2106a3026170a6b6b9bf60810b437ed5
 }
 
 public function mostrarViaje($ID_viaje)

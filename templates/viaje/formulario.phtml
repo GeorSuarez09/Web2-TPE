@@ -26,8 +26,7 @@
             <select name="ID_categoria" required>
                 <?php foreach ($categorias as $categoria): ?>
                     <option value="<?= $categoria->ID_categoria ?>"></option>
-                    <option value="1" <?php if ($viaje->ID_categoria == 1) echo "selected"; ?>>Categoría 1</option>
-                    <option value="2" <?php if ($viaje->ID_categoria == 2) echo "selected"; ?>>Categoría 2</option>
+                   
                 <?php endforeach; ?>
             </select>
         </div>  
