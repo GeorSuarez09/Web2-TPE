@@ -31,9 +31,9 @@
         return $categoria;
     }
     
-    public function verCategoriaById($id){
+    public function verCategoriaById($ID_categoria){
         $query = $this->db->prepare('SELECT * FROM categoria WHERE id = ?');
-        $query->execute([$id]);      
+        $query->execute([$ID_categoria]);      
         $categoria = $query->fetch(PDO::FETCH_OBJ);    
         return $categoria;
     }  

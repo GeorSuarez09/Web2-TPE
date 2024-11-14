@@ -1,8 +1,13 @@
 <?php
+require_once 'app/libs/response.php';
+require_once 'app/middlewares/readSession.php';
+require_once 'app/middlewares/veryfyAuth.php';
 require_once './controller/viaje.controller.php';
 require_once './controller/categoria.controller.php';
+require_once 'app/controllers/auth.controller.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+$res = new Response();
 
 $action = 'inicio';
 if (!empty($_GET['action'])) { 
@@ -33,7 +38,8 @@ viajePorCategoria/:ID -->          viajeController() -> verViajeXCategoria($para
 
 switch ($params[0]) {
     case 'listarViajes':
-        $controller = new viajeController();
+        sessionAuthMiddleware($res);
+        $controller = new viajeController($res);
         $controller->mostrarViajes();
         break;
         
@@ -48,23 +54,41 @@ switch ($params[0]) {
         break;
 
     case 'agregar':
-        $controller = new viajeController();
+        sessionAuthMiddleware($res); // veirifica que el usuario este logueado y setea $res->user, o redirige a login
+        verifyAuthMiddleware($res);
+        $controller = new viajeController($res);
         $controller->addViaje();
         break;
 
     case 'delete':
-        $controller = new viajeController(); 
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new viajeController($res); 
         $controller->eliminarViaje($params[1]);
         break;
 
     case 'editarViaje':
-        $controller = new viajeController();
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new viajeController($res);
         $controller->mostrarformEditViaje($params[1]);
         break;
 
     case 'update':
         $controller = new viajeController();
         $controller->updateViajes($params[1]);
+        break;
+    case 'showLogin':
+        $controller = new AuthController();
+        $controller->showLogin();
+        break;
+    case 'login':
+        $controller = new AuthController();
+        $controller->login();
+        break;
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logout();
         break;
 
 
