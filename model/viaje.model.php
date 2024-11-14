@@ -39,7 +39,7 @@
     }  
      //Agregar Viaje
     public function agregarViaje($fecha, $hora, $origen, $destino, $ID_categoria = null) {
-        $query = $this->db->prepare('INSERT INTO viaje(Fecha, Hora, Origen, Destino, ID_categoria) VALUES (?, ?, ?, ?, ?, ?)');
+        $query = $this->db->prepare('INSERT INTO viaje(Fecha, Hora, Origen, Destino, ID_categoria) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$fecha, $hora, $origen, $destino, $ID_categoria]);
         $ID_viaje = $this->db->lastInsertId(); 
         return $ID_viaje;

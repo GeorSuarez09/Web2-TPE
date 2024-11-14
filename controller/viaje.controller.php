@@ -41,12 +41,14 @@ public function mostrarformViajes()
     $this->view->mostrarformViajes($categoria);
 }
 public function addViaje() {
+    
+
     // Verifica si se ha enviado el formulario
     if (!isset($_POST['Fecha']) || empty($_POST['Fecha']) ||
         !isset($_POST['Hora']) || empty($_POST['Hora']) ||
         !isset($_POST['Origen']) || empty($_POST['Origen']) ||
         !isset($_POST['Destino']) || empty($_POST['Destino']) ||
-        !isset($_POST['ID_categoria']) || empty($_POST['ID_categoria'])) {
+        !isset($_POST['id_categoria']) || empty($_POST['id_categoria'])) {
         return $this->view->mostrarErrores('Falta completar todos los campos obligatorios');
     }
 
@@ -55,13 +57,13 @@ public function addViaje() {
     $hora = $_POST['Hora'];
     $origen = $_POST['Origen'];
     $destino = $_POST['Destino'];
-    $ID_categoria = $_POST['ID_categoria'];
+    $ID_categoria = $_POST['id_categoria'];
     
     // Agrega el viaje a la base de datos
     $this->model->agregarViaje($fecha, $hora, $origen, $destino, $ID_categoria);
 
     // Redirige al listado de viajes
-    header('Location: ' . BASE_URL);
+    header('Location: ' . BASE_URL . 'listarViajes');
 }
 
 public function mostrarFormEditViaje($ID_viaje)

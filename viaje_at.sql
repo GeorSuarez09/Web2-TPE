@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2024 a las 21:38:15
+-- Tiempo de generación: 13-11-2024 a las 20:32:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,8 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `viaje_at`
+-- Base de datos: `viajes_at`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `ID_categoria` int(11) NOT NULL,
+  `temporada` varchar(45) NOT NULL,
+  `empresa` varchar(50) NOT NULL,
+  `comodidad` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`ID_categoria`, `temporada`, `empresa`, `comodidad`)
+ VALUES
+(1, '?', '?', '?');
 
 -- --------------------------------------------------------
 
@@ -28,20 +49,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usuario` (
-  `ID_usuario` int(11) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `DNI` int(20) NOT NULL,
-  `Gmail` varchar(45) NOT NULL
+  `id` int(11) NOT NULL,
+  `password` char(60) NOT NULL,
+  `gmail` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`ID_usuario`, `Nombre`, `DNI`, `Gmail`) 
+INSERT INTO `usuario` (`id`, `password`, `gmail`) 
 VALUES
-(1, 'Melina', 22333456, 'zairamferreyra@gmail.com'),
-(2, 'Georgina', 33456782, 'suarezgeoor@gmail.com');
+(1, '22333456', 'zairamferreyra@gmail.com'),
+(2, '33456782', 'suarezgeoor@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -55,60 +75,72 @@ CREATE TABLE `viaje` (
   `Hora` time NOT NULL,
   `Origen` varchar(45) NOT NULL,
   `Destino` varchar(45) NOT NULL,
-  `ID_usuario` int(11) NOT NULL
+  `ID_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
-INSERT INTO `viaje` (`ID_viaje`, `Fecha`, `Hora`, `Origen`, `Destino`, `ID_usuario`) 
+INSERT INTO `viaje` (`ID_viaje`, `Fecha`, `Hora`, `Origen`, `Destino`, `ID_categoria`) 
 VALUES
-(3, '2024-09-18', '22:35:15', 'Tandil', 'Mar Del Plata', 1),
-(4, '2024-09-19', '17:35:15', 'Tandil', 'Villa Gesel', 2);
+(9, '2024-11-09', '20:30:00', 'Buenos Aires', 'Mar Del Plata', 0),
+(10, '2024-12-10', '10:00:00', 'Villa Gesel', 'Tandil', 0),
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`ID_categoria`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID_usuario`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `viaje`
 --
 ALTER TABLE `viaje`
   ADD PRIMARY KEY (`ID_viaje`),
-  ADD KEY `ID_usuario` (`ID_usuario`);
+  ADD KEY `ID_categoria` (`ID_categoria`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `ID_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `ID_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `viaje`
+-- Filtros para la tabla `categoria`
 --
-ALTER TABLE `viaje`
-  ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`ID_usuario`) REFERENCES `usuario` (`ID_usuario`) ON UPDATE CASCADE;
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`ID_categoria`) REFERENCES `viaje` (`ID_categoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
