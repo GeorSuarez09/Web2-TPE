@@ -37,12 +37,10 @@
         <input type="time" name="Hora" id="Hora" value="<?php echo $viaje->Hora; ?>" required>
 
          <!-- Campo para editar la Categoría -->
-         <label for="ID_categoria">Temporada:</label>
-            <select name="ID_categoria" required>
-                <?php foreach ($categorias as $categoria): ?>
-                    <option value="<?= $categoria->ID_categoria ?>">
-                    <option value="1" <?php if ($viaje->ID_categoria == 1) echo "selected"; ?>>Categoría 1</option>
-                    <option value="2" <?php if ($viaje->ID_categoria == 2) echo "selected"; ?>>Categoría 2</option>
+         <label for="id_categoria">Temporada:</label>
+            <select name="id_categoria" required>
+                <?php foreach ($categoria as $categorias): ?>
+                    <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?></option>
                 </option>
                 <?php endforeach; ?>
             </select>

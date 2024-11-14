@@ -10,14 +10,10 @@ class ViajeView {
         require_once './templates/viaje/detalle.phtml';
     }
     public function mostrarformViajes($categoria){
-
-      require_once './templates/viaje/formulario.phtml';
+  require_once './templates/viaje/formulario.phtml';
     }
     public function formEditViaje($ID_viaje, $viaje, $categoria, $categorias){
         require_once './templates/viaje/formeditar.phtml';
-    }
-    function showEliminarViaje($viajes) {
-        require_once './templates/viaje/formdelete.phtml';  //  cargamos el formulario de eliminación
     }
     function mostrarErrores($errores) {
         require_once './templates/viaje/errores.phtml'; // Asegúrate de incluir el encabezadp

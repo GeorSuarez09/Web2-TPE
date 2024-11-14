@@ -31,15 +31,15 @@
         return $categoria;
     }
     
-    public function verCategoriaById($ID_categoria){
-        $query = $this->db->prepare('SELECT * FROM categoria WHERE ID_categoria = ?');
-        $query->execute([$ID_categoria]);      
+    public function verCategoriaById($id){
+        $query = $this->db->prepare('SELECT * FROM categoria WHERE id = ?');
+        $query->execute([$id]);      
         $categoria = $query->fetch(PDO::FETCH_OBJ);    
         return $categoria;
     }  
      //Agregar Viaje
     public function agregarViaje($fecha, $hora, $origen, $destino, $ID_categoria = null) {
-        $query = $this->db->prepare('INSERT INTO viaje(Fecha, Hora, Origen, Destino, ID_categoria) VALUES (?, ?, ?, ?, ?)');
+        $query = $this->db->prepare('INSERT INTO viaje(Fecha, Hora, Origen, Destino, id) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$fecha, $hora, $origen, $destino, $ID_categoria]);
         $ID_viaje = $this->db->lastInsertId(); 
         return $ID_viaje;
@@ -47,7 +47,7 @@
 
   //Editar viaje
     public function editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje =null) {
-        $query = $this->db->prepare('UPDATE viaje SET `Fecha` = ?, `Hora` = ?, `Origen` = ?, `Destino` = ?, ID_categoria = ? WHERE `ID_viaje` = ?');
+        $query = $this->db->prepare('UPDATE viaje SET `Fecha` = ?, `Hora` = ?, `Origen` = ?, `Destino` = ?, id = ? WHERE `ID_viaje` = ?');
         $query->execute([$fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje]);
     }
 
@@ -58,7 +58,7 @@
     }
 
     public function mostrarViajeXCategoria($ID_categoria){
-        $query = $this->db->prepare('SELECT * FROM viaje WHERE viaje.ID_categoria = ?');
+        $query = $this->db->prepare('SELECT * FROM viaje WHERE viaje.id = ?');
         $query->execute([$ID_categoria]);
         $viaje = $query->fetchAll(PDO::FETCH_OBJ);
         return $viaje;

@@ -66,15 +66,13 @@ public function addViaje() {
     header('Location: ' . BASE_URL . 'listarViajes');
 }
 
-public function mostrarFormEditViaje($ID_viaje)
-{
+public function mostrarFormEditViaje($ID_viaje){
     $viaje = $this->model->getViajeById($ID_viaje);
 
     if (!$viaje) {
         return $this->view->mostrarErrores('El viaje que esta buscando no esta disponible');
     }
-
-    $categoria = $this->model->verCategoriaById($viaje->ID_categoria);
+    $categoria = $this->model->verCategoriaById($viaje->id);
     $categorias = $this->model->getCategorias();
     $this->view->formEditViaje($ID_viaje, $viaje, $categoria, $categorias);
 }
@@ -85,7 +83,7 @@ public function updateViajes($ID_viaje) {
     !isset($_POST['Hora']) || empty($_POST['Hora']) ||
     !isset($_POST['Origen']) || empty($_POST['Origen']) ||
     !isset($_POST['Destino']) || empty($_POST['Destino']) ||
-    !isset($_POST['ID_categoria']) || empty($_POST['ID_categoria'])) {
+    !isset($_POST['id_categoria']) || empty($_POST['id_categoria'])) {
     return $this->view->mostrarErrores('Falta completar todos los campos obligatorios');
 }
 
@@ -94,12 +92,12 @@ public function updateViajes($ID_viaje) {
             $hora = $_POST['Hora'];
             $origen = $_POST['Origen'];
             $destino = $_POST['Destino'];
-            $ID_categoria = $_POST['ID_categoria'];
+            $ID_categoria = $_POST['id_categoria'];
 
 
         // Validar los datos según sea necesario
         if ($this->model->editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje)) {
-            header('Location: ' . BASE_URL); // Redirigir después de la edición
+            header('Location: ' . BASE_URL . 'listarViajes'); // Redirigir después de la edición
         } else {
             return $this->view->mostrarErrores("No se pudo actualizar el viaje.");
         }
@@ -107,12 +105,13 @@ public function updateViajes($ID_viaje) {
 }
 
 public function eliminarViaje($ID_viaje){
-  $viaje = $this->model->getViajeById($ID_viaje);
-  if (!$viaje) {
-      return $this->view->mostrarErrores("No existe la viaje con el id=$ID_viaje");
-  }
-  $this->model->deleteViaje($ID_viaje);
-  header('Location: ' . BASE_URL );
+    if($this->model->getViajeById($ID_viaje)){
+        $this->model->deleteViaje($ID_viaje);
+    }
+    else{
+        return $this->view->mostrarErrores('No existe el producto');
+    header('Location: ' . BASE_URL . 'listarViajes');
+    }
 }
 
 public function verViajeXCategoria($categoria)

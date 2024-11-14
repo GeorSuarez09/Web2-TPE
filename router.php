@@ -17,7 +17,6 @@ $params = explode('/', $action);
 listarViajes -->         viajeController() -> mostrarViajes()
 verMasViajes/:ID -->     viajeController() -> mostrarViaje($params[1])
 formularioViajes -->     viajeController() -> mostrarformViajes()
-agregar -->              viajeController() -> addViaje()
 delete/:ID -->           viajeController() -> eliminarViaje($params[1])
 editarViaje/:ID -->      viajeController() ->mostrarFormEditViaje($params[1])
 update/:ID -->           viajeController() -> updateViajes($params[1])

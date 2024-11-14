@@ -19,7 +19,7 @@ class categoriaController{
         return $this->view->mostrarCategoria($categoria);
     }
 
-    public function mostrarPersona($ID_categoria){
+    public function mostrarCategoria($ID_categoria){
         $categoria = $this->model->verCategoriaById($ID_categoria);        
         if(!$categoria){
             return $this->view->mostrarErrores("No se a encontrado la categoria con la id: $ID_categoria");
