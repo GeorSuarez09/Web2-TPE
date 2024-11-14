@@ -17,15 +17,9 @@
        return $viaje;
     }
     //Obtengo viaje por ID
-<<<<<<< HEAD
-    public function getViajeById($id) {
-        $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
-        $query->execute([$id]);
-=======
     public function getViajeById($ID_viaje) {
         $query = $this->db->prepare('SELECT * FROM viaje WHERE ID_viaje = ?');
         $query->execute([$ID_viaje]);
->>>>>>> 880753fe2106a3026170a6b6b9bf60810b437ed5
         $viaje = $query->fetch(PDO::FETCH_OBJ);
         return $viaje;
     }
@@ -37,32 +31,6 @@
         return $categoria;
     }
     
-<<<<<<< HEAD
-    public function verCategoriaById($id_categoria){
-        $query = $this->db->prepare('SELECT * FROM categoria WHERE ID_categoria = ?');
-        $query->execute([$id_categoria]);      
-        $categorias = $query->fetch(PDO::FETCH_OBJ);    
-        return $categorias;
-    }  
-     //Agregar Viaje
-    public function agregarViaje($fecha, $hora, $origen, $destino = false) {
-        $query = $this->db->prepare('INSERT INTO viaje(Fecha, Hora, Origen, Destino) VALUES (?, ?, ?, ?)');
-        $query->execute([$fecha, $hora, $origen, $destino]);
-        $id_viaje = $this->db->lastInsertId(); 
-        return $id_viaje;
-    }
-
-  //Editar viaje
-    public function editarViaje($fecha, $hora, $origen, $destino, $id) {
-        $query = $this->db->prepare('UPDATE viaje SET `Fecha` = ?, `Hora` = ?, `Origen` = ?, `Destino` = ? WHERE `ID_viaje` = ?');
-        $query->execute([$fecha, $hora, $origen, $destino, $id]);
-    }
-
-    // Eliminar viaje
-    public function deleteViaje($id) {
-        $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
-        $query->execute([$id]); //evitar la inyeccion SQL
-=======
     public function verCategoriaById($ID_categoria){
         $query = $this->db->prepare('SELECT * FROM categoria WHERE ID_categoria = ?');
         $query->execute([$ID_categoria]);      
@@ -94,7 +62,6 @@
         $query->execute([$ID_categoria]);
         $viaje = $query->fetchAll(PDO::FETCH_OBJ);
         return $viaje;
->>>>>>> 880753fe2106a3026170a6b6b9bf60810b437ed5
     }
 }
     ?>
