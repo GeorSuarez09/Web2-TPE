@@ -30,7 +30,7 @@ public function mostrarViaje($ID_viaje)
     if (!$viaje) {
         return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $ID_viaje");
     }
-    $ID_categoria = $viaje->ID_categoria;
+    $ID_categoria = $viaje->id;
     $categoria = $this->model->verCategoriaById($ID_categoria);
    return $this->view->viajeDetalles($viaje, $categoria);
 }
@@ -76,7 +76,6 @@ public function mostrarFormEditViaje($ID_viaje){
     $categorias = $this->model->getCategorias();
     $this->view->formEditViaje($ID_viaje, $viaje, $categoria, $categorias);
 }
-
 public function updateViajes($ID_viaje) {
           // Verifica si se ha enviado el formulario
     if (!isset($_POST['Fecha']) || empty($_POST['Fecha']) ||
@@ -95,13 +94,11 @@ public function updateViajes($ID_viaje) {
             $ID_categoria = $_POST['id_categoria'];
 
 
-        // Validar los datos según sea necesario
-        if ($this->model->editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje)) {
-            header('Location: ' . BASE_URL . 'listarViajes'); // Redirigir después de la edición
-        } else {
-            return $this->view->mostrarErrores("No se pudo actualizar el viaje.");
-        }
-    
+      // Llamar al modelo para actualizar el viaje en la base de datos
+    $this->model->editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje);
+
+    // Redirigir al listado de viajes después de la edición
+    header('Location: ' . BASE_URL . 'listarViajes');
 }
 
 public function eliminarViaje($ID_viaje){
@@ -109,7 +106,7 @@ public function eliminarViaje($ID_viaje){
         $this->model->deleteViaje($ID_viaje);
     }
     else{
-        return $this->view->mostrarErrores('No existe el producto');
+        return $this->view->mostrarErrores('No existe el viaje');
     header('Location: ' . BASE_URL . 'listarViajes');
     }
 }

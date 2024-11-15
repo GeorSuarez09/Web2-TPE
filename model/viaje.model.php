@@ -46,8 +46,8 @@
     }
 
   //Editar viaje
-    public function editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje =null) {
-        $query = $this->db->prepare('UPDATE viaje SET `Fecha` = ?, `Hora` = ?, `Origen` = ?, `Destino` = ?, id = ? WHERE `ID_viaje` = ?');
+    public function editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje = null) {
+        $query = $this->db->prepare('UPDATE viaje SET `Fecha` = ?, `Hora` = ?, `Origen` = ?, `Destino` = ?, `id` = ? WHERE `ID_viaje` = ?');
         $query->execute([$fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje]);
     }
 

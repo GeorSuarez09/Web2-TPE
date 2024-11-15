@@ -36,8 +36,8 @@ public function verCategoriaById($ID_categoria){
 }  
 
     //insertar a la DB 
-    public function agregarCategoria($temporada, $empresa, $comodidad) { 
-        $query = $this->db->prepare('INSERT INTO categoria (temporada, empresa, comodidad) VALUES (?, ?, ?)');
+    public function agregarCategoria($temporada, $empresa, $comodidad = null) { 
+        $query = $this->db->prepare('INSERT INTO categoria(temporada, empresa, comodidad) VALUES (?, ?, ?)');
         $query->execute([$temporada, $empresa, $comodidad]);    
         $ID_categoria= $this->db->lastInsertId(); 
         return $ID_categoria;

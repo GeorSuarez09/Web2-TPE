@@ -19,8 +19,8 @@
         <td><?php echo $viaje->Origen; ?></td>
         <td><?php echo $viaje->Destino; ?></td>
         <td>
-            <a href="editarViaje/<?php echo $viaje->ID_viaje; ?>">Editar</a>
-            <a href="eliminar/<?php echo $viaje->ID_viaje; ?>">Eliminar</a>
+        <a href="<?= BASE_URL ?>editarViaje/<?= $viaje->ID_viaje ?>">Editar</a>
+        <a href="<?= BASE_URL ?>eliminar/<?= $viaje->ID_viaje ?>">Eliminar</a>
         </td>
         <td>
             <a href="<?= BASE_URL ?>verMasViajes/<?= $viaje->ID_viaje ?>">Ver Más</a>

@@ -60,7 +60,7 @@ switch ($params[0]) {
         $controller->addViaje();
         break;
 
-    case 'delete':
+    case 'eliminar':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new viajeController($res); 
@@ -117,6 +117,8 @@ switch ($params[0]) {
         $controller = new categoriaController();
         $controller->modificarCategoria($params[1]);
         break;
+
+        
         case 'viajePorCategoria':
             $controller = new viajeController();
             $controller->verViajeXCategoria($params[1]);

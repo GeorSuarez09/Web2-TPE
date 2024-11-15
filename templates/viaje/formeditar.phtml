@@ -10,6 +10,7 @@
                 <li><strong>Hora de salida:</strong> <?= $viaje->Hora ?></li>
                 <li><strong>Origen:</strong> <?= $viaje->Origen ?></li>
                 <li><strong>Destino:</strong> <?= $viaje->Destino ?></li>
+                <li><strong>Temporada</strong><?=$categoria-> temporada?></li>
             </ul>
         </div>
     </div>
@@ -19,28 +20,29 @@
     <h1>Editar Viaje</h1>
     <form method="POST" action="<?= BASE_URL ?>update/<?= $id ?>">
         <input type="hidden" name="id" value="<?php echo $viaje->ID_viaje; ?>">
-
-        <!-- Campo para editar el Origen -->
-        <label for="Origen">Origen:</label>
-        <input type="text" name="Origen" id="Origen" value="<?php echo $viaje->Origen; ?>" required>
-
-        <!-- Campo para editar el Destino -->
-        <label for="Destino">Destino:</label>
-        <input type="text" name="Destino" id="Destino" value="<?php echo $viaje->Destino; ?>" required>
-
-        <!-- Campo para editar la Fecha -->
-        <label for="Fecha">Fecha:</label>
-        <input type="date" name="Fecha" id="Fecha" value="<?php echo $viaje->Fecha; ?>" required>
-
-        <!-- Campo para editar la Hora -->
-        <label for="Hora">Hora:</label>
-        <input type="time" name="Hora" id="Hora" value="<?php echo $viaje->Hora; ?>" required>
+        <div>
+        <label for="fecha">Fecha de Viaje</label>
+            <input type="date" id="fecha" name="Fecha" required>
+        </div>
+        <div class="col1">
+            <label for="hora">Horario</label>
+            <input type="number" id="hora" name="Hora" required>
+        </div>
+        <div class="col1">
+            <label for="origen">Origen</label>
+            <input type="text" id="origen" name="Origen" required>
+        </div>
+        <div class="col1">
+            <label for="destino">Destino</label>
+            <input type="text" id="destino" name="Destino" required>
+        </div>
 
          <!-- Campo para editar la Categoría -->
          <label for="id_categoria">Temporada:</label>
             <select name="id_categoria" required>
                 <?php foreach ($categoria as $categorias): ?>
-                    <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?></option>
+                    <option value="<?= $categorias->id ?>" <?= ($viaje->id == $categorias->id) ? 'selected' : '' ?>>
+                    <?= $categorias->temporada ?>
                 </option>
                 <?php endforeach; ?>
             </select>

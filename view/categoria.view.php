@@ -1,12 +1,12 @@
 <?php
 class categoriaView{
     // mostrar DB
-    public function mostrarCategoria($categoria){
+    public function mostrarCategoria($categorias){
         // traigo el PHTL del listado;
         require_once 'templates/categoria/listacategoria.phtml';
     }
     public function listadoCategoria($categoria) {
-        require_once 'templatesviaje/detalle.phtml';
+        require_once 'templates/viaje/detalle.phtml';
 
     }
     public function mostrarformCategoria(){

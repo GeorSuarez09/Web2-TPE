@@ -11,7 +11,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Temporada y Empresa</th>
+                    <th>Temporada</th>
                     <th>Fecha salida</th>
                     <th>Horario</th>
                     <th>Origen</th>
@@ -21,14 +21,14 @@
             <tbody>
                 <?php foreach ($viajes as $viaje): ?>
                     <tr>
-                        <td><?= $categoria->temporada ?> <?= $categoria->empresa ?></td>
+                        <td><?= $categoria->temporada ?></td>
                         <td><a href="<?= BASE_URL ?>verMasViajes/<?= $viaje->ID_viaje ?>" class=""><?= $viaje->Fecha ?> a <?= $viaje->Hora ?></a></td>
                         <td><?= $viaje->Origen ?></td>
-                        <td>$ <?= $viaje->Destino ?> ARS</td>
+                        <td>$ <?= $viaje->Destino ?></td>
                         <td>
                             <?php if (!empty($_SESSION['id'])): ?>
                                 <div class="btn-group" role="group">
-                                    <a href="<?= BASE_URL ?>delete/<?= $viaje->ID_viaje ?>" class="btn btn-outline-danger">Borrar</a>
+                                    <a href="<?= BASE_URL ?>eliminar/<?= $viaje->ID_viaje ?>" class="btn btn-outline-danger">Borrar</a>
                                     <a href="<?= BASE_URL ?>editarViaje/<?= $viaje->ID_viaje ?>" class="btn btn-outline-success">Editar</a>
                                 </div>
                             <?php endif; ?>
