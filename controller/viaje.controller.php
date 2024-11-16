@@ -76,7 +76,6 @@ public function mostrarFormEditViaje($ID_viaje){
     $categorias = $this->model->getCategorias();
     $this->view->formEditViaje($ID_viaje, $viaje, $categoria, $categorias);
 }
-
 public function updateViajes($ID_viaje) {
           // Verifica si se ha enviado el formulario
     if (!isset($_POST['Fecha']) || empty($_POST['Fecha']) ||

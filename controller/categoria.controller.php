@@ -12,11 +12,11 @@ class categoriaController{
     }
 
     public function mostrarCategorias(){
-        $categoria = $this->model->getCategorias();            
-        if(!$categoria){
+        $categorias = $this->model->getCategorias();            
+        if(!$categorias){
             return $this->view->mostrarErrores("No hay categoria disponibles");
         }
-        return $this->view->mostrarCategoria($categoria);
+        return $this->view->mostrarCategoria($categorias);
     }
 
     public function mostrarCategoria($ID_categoria){
@@ -30,7 +30,7 @@ class categoriaController{
         $ID_categoria= $this->model->verCategoriaById($ID_categoria);
  }
     public function mostrarformCategorias(){
-       // $this -> model ->agregarCategoria($temporada, $empresa, $comodidad);
+       // $categoria= $this->model->getCategorias();
         $this->view->mostrarformCategoria();
     }
 
@@ -42,16 +42,16 @@ class categoriaController{
     return $this->view->mostrarErrores('Falta completar todos los campos obligatorios');
 }
 
-// Asigna las variables correctamente
-$temporada = $_POST['temporada'];
-$empresa = $_POST['empresa'];
-$comodidad = $_POST['comodidad'];
+            // Asigna las variables correctamente
+            $temporada = $_POST['temporada'];
+            $empresa = $_POST['empresa'];
+            $comodidad = $_POST['comodidad'];
 
-// Agrega el viaje a la base de datos
-$this->model->agregarCategoria($temporada, $empresa, $comodidad);
+            // Agrega el viaje a la base de datos
+            $this->model->agregarCategoria($temporada, $empresa, $comodidad);
 
-// Redirige al listado de viajes
-header('Location: ' . BASE_URL);
+            // Redirige al listado de viajes
+            header('Location: ' . BASE_URL . 'mostrarCategoria');
       }
     
     public function mostrarFormEditCategoria($ID_categoria){

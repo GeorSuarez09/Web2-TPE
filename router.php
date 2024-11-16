@@ -117,6 +117,8 @@ switch ($params[0]) {
         $controller = new categoriaController();
         $controller->modificarCategoria($params[1]);
         break;
+
+        
         case 'viajePorCategoria':
             $controller = new viajeController();
             $controller->verViajeXCategoria($params[1]);
