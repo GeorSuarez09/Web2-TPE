@@ -1,4 +1,4 @@
-<?php require 'templates/header.phtml'; ?>
+<?php require './templates/header.phtml'; ?>
 
 <div class="container mt-5">
     <h2 class="display-6 text-center mb-4">Detalles del Viaje</h2>
@@ -10,6 +10,10 @@
                 <li><strong>Hora de salida:</strong> <?= $viaje->Hora ?></li>
                 <li><strong>Origen:</strong> <?= $viaje->Origen ?></li>
                 <li><strong>Destino:</strong> <?= $viaje->Destino ?></li>
+                <li><strong>Temporada:</strong><?=$categoria->temporada?></li>
+                <li><strong>Empresa:</strong><?=$categoria->empresa?></li>
+                <li><strong>Comodidad:</strong><?=$categoria->comodidad?></li>
+
             </ul>
         </div>
     </div>
@@ -17,7 +21,7 @@
 
 <div>
     <h1>Editar Viaje</h1>
-    <form method="POST" action="<?= BASE_URL ?>update/<?= $id ?>">
+    <form method="POST" action="<?= BASE_URL ?>update/<?= $ID_viaje ?>">
         <input type="hidden" name="id" value="<?php echo $viaje->ID_viaje; ?>">
 
         <!-- Campo para editar el Origen -->
@@ -39,15 +43,14 @@
          <!-- Campo para editar la Categoría -->
          <label for="id_categoria">Temporada:</label>
             <select name="id_categoria" required>
-                <?php foreach ($categoria as $categorias): ?>
-                    <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?></option>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria->id ?>"><?php echo $categoria->temporada?>-<?php echo $categoria->empresa?>-<?php echo $categoria->comodidad?></option>
                 </option>
                 <?php endforeach; ?>
             </select>
         </div> 
-
         <button type="submit">Actualizar</button>
     </form>
 </div>
 
-<?php require 'templates/footer.phtml'; ?>
+<?php require './templates/footer.phtml'; ?>

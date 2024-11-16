@@ -1,4 +1,4 @@
-<?php require 'templates/header.phtml'; ?>
+<?php require './templates/header.phtml'; ?>
 
 <div>
     <h2 class="display-6 text-center mb-4">Detalles de la Categoria</h2>
@@ -7,8 +7,8 @@
         <div>
             <ul class="list-group list-group-flush">
                 <li><strong>Temporada:</strong> <?= $categoria->temporada ?></li>
-                <li><strong>Empresa:</strong> <?= $persona->empresa ?></li>
-                <li><strong>Comodidad:</strong> <?= $persona->comodidad ?></li>   
+                <li><strong>Empresa:</strong> <?= $categoria->empresa ?></li>
+                <li><strong>Comodidad:</strong> <?= $categoria->comodidad ?></li>   
              </ul>
         </div>
     </div>
@@ -19,21 +19,18 @@
         <div >
             <form action="<?= BASE_URL ?>editarCategoria/<?= $ID_categoria ?>" method="POST" novalidate>
                 <div>
-                    <label for="temporadaa">Temporada</label>
-                    <input type="text" id="temporadaa" name="temporada" value="<?= $categoria->temporada ?>" required>
-                    <div>Por favor, ingresa una temporada válido.</div>
+                    <label for="temporada">Temporada</label>
+                    <input type="text" id="temporada" name="temporada" value="<?= $categoria->temporada ?>" required>
                 </div>
 
                 <div>
-                    <label for="empresaa">Empresa</label>
-                    <input type="text" id="empresaa" name="empresa" value="<?= $categoria->empresa ?>" required>
-                    <div class="invalid-feedback">Por favor, ingresa una empresa válido.</div>
+                    <label for="empresa">Empresa</label>
+                    <input type="text" id="empresa" name="empresa" value="<?= $categoria->empresa ?>" required>
                 </div>
 
                 <div>
-                    <label for="comodidadd">Comodidad</label>
-                    <input type="number" class="form-control" id="validationCustom03" name="dni" value="<?= $persona->dni ?>" required>
-                    <div class="invalid-feedback">Por favor, ingresa un DNI válido.</div>
+                    <label for="comodidad">Comodidad</label>
+                    <input type="text" id="comodidad" name="comodidad" value="<?= $categoria->comodidad ?>" required>
                 </div>
 
 
@@ -45,4 +42,4 @@
     </div>
 </div>
 
-<?php require 'templates/footer.phtml'; ?>
+<?php require './templates/footer.phtml'; ?>

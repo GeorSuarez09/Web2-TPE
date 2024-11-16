@@ -2,7 +2,7 @@
 class UserModel{
     //abre conexion a la base de datos
     private function connect(){
-        $db = new PDO('mysql:host=localhost;dbname=viajes_at;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=viaje_tpe;charset=utf8', 'root', '');
         return $db;
     }
 

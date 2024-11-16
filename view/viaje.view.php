@@ -1,13 +1,17 @@
 <?php
 
 class ViajeView {
+    public $user;
 
+    public function __construct($user = null) {
+        $this->user = $user;
+    }
 
     public function showViaje($viajes) {
         require_once './templates/viaje/formlistar.phtml';
     }
     public function viajeDetalles($viaje, $categoria){
-        require_once './templates/viaje/detalle.phtml';
+        require_once './templates/viaje/detalleviaje.phtml';
     }
     public function mostrarformViajes($categoria){
   require_once './templates/viaje/formulario.phtml';

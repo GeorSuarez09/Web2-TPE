@@ -9,8 +9,13 @@
 </head>
 <body>
 <header>
-    <ul class="barraNavegacion">
-        <li class="nav">Aventura Time</li>
-        <li class="nav"><a href="iniciarsesion"><button>Iniciar Sesion</button></a></li>
+<?php if (isset($user) && $user): ?>
+    <li class="nav"><a href="logout"><button>Cerrar Sesión</button></a></li>
+<?php else: ?>
+    <li class="nav"><a href="login"><button>Iniciar Sesión</button></a></li>
+<?php endif; ?>
+
+
+
     </ul>
 </header>

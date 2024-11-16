@@ -4,7 +4,7 @@
     private $db;
 
         public function __construct() {
-            $this->db = new PDO('mysql:host=localhost;dbname=viajes_at;charset=utf8', 'root', '');
+            $this->db = new PDO('mysql:host=localhost;dbname=viaje_tpe;charset=utf8', 'root', '');
         }
 
    
@@ -38,7 +38,7 @@
         return $categoria;
     }  
      //Agregar Viaje
-    public function agregarViaje($fecha, $hora, $origen, $destino, $ID_categoria = null) {
+    public function agregarViaje($fecha, $hora, $origen, $destino, $ID_categoria) {
         $query = $this->db->prepare('INSERT INTO viaje(Fecha, Hora, Origen, Destino, id) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$fecha, $hora, $origen, $destino, $ID_categoria]);
         $ID_viaje = $this->db->lastInsertId(); 
@@ -46,7 +46,7 @@
     }
 
   //Editar viaje
-    public function editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje =null) {
+    public function editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje) {
         $query = $this->db->prepare('UPDATE viaje SET `Fecha` = ?, `Hora` = ?, `Origen` = ?, `Destino` = ?, id = ? WHERE `ID_viaje` = ?');
         $query->execute([$fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje]);
     }
@@ -54,7 +54,7 @@
     // Eliminar viaje
     public function deleteViaje($ID_viaje) {
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
-        $query->execute([$ID_viaje]); //evitar la inyeccion SQL
+        $query->execute([$ID_viaje]);
     }
 
     public function mostrarViajeXCategoria($ID_categoria){

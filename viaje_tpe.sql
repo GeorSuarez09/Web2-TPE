@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2024 a las 20:32:46
+-- Tiempo de generación: 15-11-2024 a las 23:58:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `viajes_at`
+-- Base de datos: `viaje_tpe`
 --
 
 -- --------------------------------------------------------
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categoria` (
-  `ID_categoria` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `temporada` varchar(45) NOT NULL,
   `empresa` varchar(50) NOT NULL,
   `comodidad` varchar(45) NOT NULL
@@ -38,9 +38,11 @@ CREATE TABLE `categoria` (
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`ID_categoria`, `temporada`, `empresa`, `comodidad`)
- VALUES
-(1, '?', '?', '?');
+INSERT INTO `categoria` (`id`, `temporada`, `empresa`, `comodidad`) VALUES
+(1, 'invierno', 'via tac', 'semicama'),
+(2, 'verano', 'via tac', 'semicama'),
+(3, 'primavera', 'via tac', 'semicama'),
+(4, 'otonio', 'semicama', 'semicama');
 
 -- --------------------------------------------------------
 
@@ -49,19 +51,17 @@ INSERT INTO `categoria` (`ID_categoria`, `temporada`, `empresa`, `comodidad`)
 --
 
 CREATE TABLE `usuario` (
+  `gmail` varchar(45) NOT NULL,
   `id` int(11) NOT NULL,
-  `password` char(60) NOT NULL,
-  `gmail` varchar(45) NOT NULL
+  `password` char(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `password`, `gmail`) 
-VALUES
-(1, '22333456', 'zairamferreyra@gmail.com'),
-(2, '33456782', 'suarezgeoor@gmail.com');
+INSERT INTO `usuario` (`gmail`, `id`, `password`) VALUES
+('geomel@tpe.com', 1, '$2y$10$Cqrp/rXnc4q7lSJdwExbSeX/pfnlhbTzOCKOSH/5SdaI8vAKTjmLi');
 
 -- --------------------------------------------------------
 
@@ -75,17 +75,16 @@ CREATE TABLE `viaje` (
   `Hora` time NOT NULL,
   `Origen` varchar(45) NOT NULL,
   `Destino` varchar(45) NOT NULL,
-  `ID_categoria` int(11) NOT NULL
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
-INSERT INTO `viaje` (`ID_viaje`, `Fecha`, `Hora`, `Origen`, `Destino`, `ID_categoria`) 
-VALUES
-(9, '2024-11-09', '20:30:00', 'Buenos Aires', 'Mar Del Plata', 0),
-(10, '2024-12-10', '10:00:00', 'Villa Gesel', 'Tandil', 0),
+INSERT INTO `viaje` (`ID_viaje`, `Fecha`, `Hora`, `Origen`, `Destino`, `id`) VALUES
+(1, '2024-11-14', '19:00:20', 'Tandil', 'Buenos Aires', 0),
+(2, '2024-11-01', '15:14:20', 'Tandil', 'Mar del plata', 0);
 
 --
 -- Índices para tablas volcadas
@@ -95,20 +94,21 @@ VALUES
 -- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`ID_categoria`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `gmail` (`gmail`);
 
 --
 -- Indices de la tabla `viaje`
 --
 ALTER TABLE `viaje`
   ADD PRIMARY KEY (`ID_viaje`),
-  ADD KEY `ID_categoria` (`ID_categoria`);
+  ADD KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -118,29 +118,19 @@ ALTER TABLE `viaje`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `ID_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `ID_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `categoria`
---
-ALTER TABLE `categoria`
-  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`ID_categoria`) REFERENCES `viaje` (`ID_categoria`);
+  MODIFY `ID_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

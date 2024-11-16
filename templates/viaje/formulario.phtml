@@ -1,4 +1,4 @@
-<?php require_once 'templates/header.phtml'; ?>
+<?php require_once './templates/header.phtml'; ?>
 
 <div>
     <h1>Agregar Nuevo Viaje</h1>
@@ -26,7 +26,7 @@
             <select name="id_categoria" required>
                 <?php foreach ($categoria as $categorias): ?>
                    
-                    <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?></option>
+                    <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?>-<?php echo $categorias->empresa?>-<?php echo $categorias->comodidad?></option>
                 <?php endforeach; ?>
             </select>
         </div>  
@@ -36,4 +36,4 @@
     </form>
 </div>
 
-<?php require_once 'templates/footer.phtml'; ?>
+<?php require_once './templates/footer.phtml'; ?>

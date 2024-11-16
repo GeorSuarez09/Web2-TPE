@@ -1,6 +1,6 @@
 <?php
-require_once 'model/viaje.model.php';
-require_once 'view/viaje.view.php';
+require_once './model/viaje.model.php';
+require_once './view/viaje.view.php';
 
 class viajeController
 {
@@ -30,7 +30,7 @@ public function mostrarViaje($ID_viaje)
     if (!$viaje) {
         return $this->view->mostrarErrores("No se a encontrado el viaje con la id: $ID_viaje");
     }
-    $ID_categoria = $viaje->ID_categoria;
+    $ID_categoria = $viaje->id;
     $categoria = $this->model->verCategoriaById($ID_categoria);
    return $this->view->viajeDetalles($viaje, $categoria);
 }
@@ -68,10 +68,10 @@ public function addViaje() {
 
 public function mostrarFormEditViaje($ID_viaje){
     $viaje = $this->model->getViajeById($ID_viaje);
-
     if (!$viaje) {
         return $this->view->mostrarErrores('El viaje que esta buscando no esta disponible');
     }
+
     $categoria = $this->model->verCategoriaById($viaje->id);
     $categorias = $this->model->getCategorias();
     $this->view->formEditViaje($ID_viaje, $viaje, $categoria, $categorias);
@@ -94,24 +94,29 @@ public function updateViajes($ID_viaje) {
             $destino = $_POST['Destino'];
             $ID_categoria = $_POST['id_categoria'];
 
-
+            var_dump($ID_viaje);
         // Validar los datos según sea necesario
-        if ($this->model->editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje)) {
+        $viajeEditado=$this->model->editarViaje($fecha, $hora, $origen, $destino, $ID_categoria, $ID_viaje);
+        if(!$viajeEditado){
             header('Location: ' . BASE_URL . 'listarViajes'); // Redirigir después de la edición
         } else {
             return $this->view->mostrarErrores("No se pudo actualizar el viaje.");
         }
+        
     
 }
 
 public function eliminarViaje($ID_viaje){
-    if($this->model->getViajeById($ID_viaje)){
-        $this->model->deleteViaje($ID_viaje);
-    }
-    else{
-        return $this->view->mostrarErrores('No existe el producto');
-    header('Location: ' . BASE_URL . 'listarViajes');
-    }
+    
+    $viaje =$this->model->getViajeById($ID_viaje);
+    $eliminar =  $this->model->deleteViaje($ID_viaje);
+    if($viaje && !$eliminar){
+
+        header('Location: ' . BASE_URL . 'listarViajes'); 
+    } else {
+        return $this->view->mostrarErrores("No se pudo eliminar el viaje.");
+    }    
+
 }
 
 public function verViajeXCategoria($categoria)

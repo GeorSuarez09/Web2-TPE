@@ -1,4 +1,4 @@
-<?php require 'templates/header.phtml'; ?>
+<?php require './templates/header.phtml'; ?>
 
 <div >
     <h2>Detalles del Viaje</h2>
@@ -6,15 +6,16 @@
     <div>
         <div>
             <ul>
-                <li><strong>Destino de Inicio:</strong> <?= $viaje->Destino ?></li>
-                <li><strong>Destino de Llegada:</strong> <?= $viaje->Origen ?></li>
-                <li><strong>Fecha de Salida:</strong> <?= $viaje->Fecha?></li>
-                <li><strong>Precio:</strong> $<?= $viaje->Hora ?></li>
-
-
+            <li ><strong>Fecha de salida:</strong> <?= $viaje->Fecha ?></li>
+                <li><strong>Hora de salida:</strong> <?= $viaje->Hora ?></li>
+                <li><strong>Origen:</strong> <?= $viaje->Origen ?></li>
+                <li ><strong>Destino:</strong> <?= $viaje->Destino ?></li>
+                <li><strong>Temporada:</strong> <?=$categoria->temporada?></li>
+                <li><strong>Empresa:</strong><?=$categoria->empresa?></li>
+                <li><strong>Comodidad:</strong><?=$categoria->comodidad?></li>
             </ul>
         </div>
     </div>
 </div>
 
-<?php require 'templates/footer.phtml'; ?>
+<?php require './templates/footer.phtml'; ?>

@@ -2,7 +2,7 @@
 class categoriaModel{
     private $db;
     public function __construct(){
-        $this->db = new PDO('mysql:host=localhost;dbname=viajes_at;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;dbname=viaje_tpe;charset=utf8', 'root', '');
     }
     
 //Traer la DB completa fetchAll

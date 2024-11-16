@@ -1,14 +1,14 @@
 <?php
-require_once './app/models/user.model.php';
-require_once './app/views/auth.view.php';
+require_once './model/user.model.php';
+require_once './view/auth.view.php';
 
 class AuthController {
     private $model;
     private $view;
 
-    public function __construct() {
+    public function __construct($res) {
         $this->model = new UserModel();
-        $this->view = new AuthView();
+        $this->view = new AuthView($res->user);
     }
 
     public function showLogin() {
@@ -17,6 +17,7 @@ class AuthController {
     }
 
     public function login() {
+    
         if (!isset($_POST['gmail']) || empty($_POST['gmail'])) {
             return $this->view->showLogin('Falta completar el nombre de usuario');
         }
@@ -27,13 +28,14 @@ class AuthController {
     
         $gmail = $_POST['gmail'];
         $password = $_POST['password'];
-    
+        
         // Verificar que el usuario está en la base de datos
         $userFromDB = $this->model->getUserByGmail($gmail);
-        var_dump($userFromDB);
+        
         echo password_verify($password, $userFromDB->password);
         // exit;
         if($userFromDB && password_verify($password, $userFromDB->password)){
+            
             // Guardo en la sesión el ID del usuario
             session_start();
             $_SESSION['ID_USER'] = $userFromDB->id;
@@ -43,7 +45,7 @@ class AuthController {
         } else {
             return $this->view->showLogin('Credenciales incorrectas');
         }
-        
+       
     }
 
     public function logout(){

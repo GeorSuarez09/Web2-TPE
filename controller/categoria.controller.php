@@ -1,6 +1,6 @@
 <?php
-require_once 'view/categoria.view.php';
-require_once 'model/categoria.model.php';
+require_once './view/categoria.view.php';
+require_once './model/categoria.model.php';
 
 class categoriaController{
     private $model;
@@ -60,6 +60,7 @@ header('Location: ' . BASE_URL);
         if(!$categoria){
             return $this->view->mostrarErrores('La categoria que esta buscando no esta disponible');
         }
+        
         $this->view->mostrarFormEditCategoria($ID_categoria, $categoria);
     }
       public function modificarCategoria($ID_categoria){
@@ -75,9 +76,12 @@ header('Location: ' . BASE_URL);
                   $empresa = $_POST['empresa'];
                   $comodidad = $_POST['comodidad'];
                 
-                  $this->model->editarCategoria($ID_categoria,$temporada, $empresa, $comodidad);
-                  header('Location: ' . BASE_URL );
-    
+                 $categoria=  $this->model->editarCategoria($ID_categoria,$temporada, $empresa, $comodidad);
+                 if($categoria){
+                    header('Location: ' . BASE_URL . 'verMasViajes' );
+                 }else{
+                return $this->view->mostrarErrores("No se puede actualizar la categoria");
+                 }    
          }     
     public function borrarCategoria($ID_categoria){
         $categoria = $this->model->verCategoriaById($ID_categoria);

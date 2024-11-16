@@ -1,15 +1,15 @@
 <?php
-require_once 'app/libs/response.php';
-require_once 'app/middlewares/readSession.php';
-require_once 'app/middlewares/veryfyAuth.php';
+require_once './libs/response.php';
+require_once './middlewares/readSession.php';
+require_once './middlewares/veryfyAuth.php';
 require_once './controller/viaje.controller.php';
 require_once './controller/categoria.controller.php';
-require_once 'app/controllers/auth.controller.php';
+require_once './controller/auth.controller.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 $res = new Response();
 
-$action = 'inicio';
+$action = 'listarViajes';
 if (!empty($_GET['action'])) { 
     $action = $_GET['action'];
 }
@@ -60,7 +60,7 @@ switch ($params[0]) {
         $controller->addViaje();
         break;
 
-    case 'delete':
+    case 'eliminar':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new viajeController($res); 
@@ -79,15 +79,15 @@ switch ($params[0]) {
         $controller->updateViajes($params[1]);
         break;
     case 'showLogin':
-        $controller = new AuthController();
+        $controller = new AuthController($res);
         $controller->showLogin();
         break;
     case 'login':
-        $controller = new AuthController();
+        $controller = new AuthController($res);
         $controller->login();
         break;
     case 'logout':
-        $controller = new AuthController();
+        $controller = new AuthController($res);
         $controller->logout();
         break;
 

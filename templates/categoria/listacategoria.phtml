@@ -1,4 +1,4 @@
-<?php require_once 'templates/header.phtml'; ?>
+<?php require_once './templates/header.phtml'; ?>
 
 <div>
     <h1>Listado de Categoria</h1>
@@ -11,17 +11,17 @@
            </tr>
         </thead>
         <tbody>
-        <?php foreach ($categorias as $categoria): ?> 
+        <?php foreach ($categoria as $categorias): ?> 
     <tr>
-        <td><?php echo $categoria->temporada; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
-        <td><?php echo $categoria->empresa; ?></td>
-        <td><?php echo $categoria->comodidad; ?></td>
+        <td><?php echo $categorias->temporada; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
+        <td><?php echo $categorias->empresa; ?></td>
+        <td><?php echo $categorias->comodidad; ?></td>
         <td>
-            <a href="editarCategoria/<?php echo $viaje->ID_viaje; ?>">Editar Categoria</a>
-            <a href="eliminarCategoria/<?php echo $viaje->ID_viaje; ?>">Eliminar</a>
+            <a href="editarCategoria/<?php echo $categorias->id; ?>">Editar Categoria</a>
+            <a href="eliminarCategoria/<?php echo $categorias->id; ?>">Eliminar</a>
         </td>
         <td>
-            <a href="<?= BASE_URL ?>verMasCategoria/<?= $categoria->ID_categoria ?>">Ver Más</a>
+            <a href="<?= BASE_URL ?>verMasViajes/<?= $categorias->id ?>">Ver Más</a>
         </td>
     </tr>
 <?php endforeach; ?>
@@ -30,4 +30,4 @@
 </div>
 
 
-<?php require_once 'templates/footer.phtml'; ?>
+<?php require_once './templates/footer.phtml'; ?>
