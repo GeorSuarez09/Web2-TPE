@@ -1,27 +1,27 @@
 <?php require './templates/header.phtml'; ?>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Agregar Categoria</h1>
+    <h3 class="text-center mb-4">Agregar Categoria</h3>
     
     <div class="card">
         <div>
             <form action="agregarCategoria" method="POST" novalidate>
-                <div class="col-md-4">
+                <div class="col1">
                     <label for="temporada">Temporada</label>
                     <input type="text" id="temporada" name="temporada" required>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col1">
                     <label for="empresa">Empresa</label>
                     <input type="text" id="empresa" name="empresa" required>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col1">
                     <label for="comodidad">Comodidad</label>
                     <input type="text" id="comodidad" name="comodidad" required>
                 </div>
 
-                <div>
+                <div class="col1">
                     <button type="submit">Agregar</button>
                 </div>
             </form>

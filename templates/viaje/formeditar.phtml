@@ -1,7 +1,7 @@
 <?php require './templates/header.phtml'; ?>
-
-<div class="container mt-5">
-    <h2 class="display-6 text-center mb-4">Detalles del Viaje</h2>
+<div class="conteinerFormEditar">
+<div class="listaViaje">
+    <h3>Detalles del Viaje</h3>
 
     <div class="card">
         <div>
@@ -18,8 +18,8 @@
     </div>
 </div>
 
-<div>
-    <h1>Editar Viaje</h1>
+<div class="formEditar">
+    <h3>Editar Viaje</h3>
     <form method="POST" action="<?= BASE_URL ?>update/<?= $ID_viaje ?>">
         <input type="hidden" name="id" value="<?php echo $viaje->ID_viaje; ?>">
         <div>
@@ -47,9 +47,11 @@
                 </option>
                 <?php endforeach; ?>
             </select>
-        </div> 
-        <button type="submit">Actualizar</button>
+        <div class="col1">
+            <button type="submit">Actualizar</button>
+        </div>
     </form>
+</div>
 </div>
 
 <?php require './templates/footer.phtml'; ?>

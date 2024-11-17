@@ -1,7 +1,7 @@
 <?php require_once './templates/header.phtml'; ?>
 
 <div>
-    <h1>Agregar Nuevo Viaje</h1>
+    <h3>Agregar Nuevo Viaje</h3>
     <form action="<?= BASE_URL ?>agregar" method="POST" novalidate>
     <div class="col1">
             <label for="fecha">Fecha de Viaje</label>
@@ -19,9 +19,7 @@
             <label for="destino">Destino</label>
             <input type="text" id="destino" name="Destino" required>
         </div>
-
-        <div class="col1">
-      <!-- CATEGORIAS-->
+       <div class="col1">
       <label for="id_cateoria">Categorias:</label>
             <select name="id_categoria" required>
                 <?php foreach ($categoria as $categorias): ?>
@@ -29,9 +27,11 @@
                     <option value="<?= $categorias->id ?>"><?php echo $categorias->temporada?>-<?php echo $categorias->empresa?>-<?php echo $categorias->comodidad?></option>
                 <?php endforeach; ?>
             </select>
-        </div>  
-
+        </div>
+        <div class="col1">
             <button type="submit">Agregar Viaje</button>
+        </div>
+            
         </div>
     </form>
 </div>

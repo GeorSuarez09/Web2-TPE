@@ -32,7 +32,7 @@ class AuthController {
         // Verificar que el usuario está en la base de datos
         $userFromDB = $this->model->getUserByGmail($gmail);
         
-        echo password_verify($password, $userFromDB->password);
+        
         // exit;
         if($userFromDB && password_verify($password, $userFromDB->password)){
             

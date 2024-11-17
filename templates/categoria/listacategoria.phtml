@@ -7,7 +7,8 @@
             <tr>
                 <th>Temporada</th>
                 <th>Empresa</th>
-                <th>Comodidad</th>     
+                <th>Comodidad</th>   
+                <th>Acciones</th>  
            </tr>
         </thead>
         <tbody>
@@ -19,8 +20,6 @@
         <td>
             <a href="mostrarFormEditCategoria/<?php echo $categoria->id; ?>">Editar Categoria</a>
             <a href="eliminarCategoria/<?php echo $categoria->id; ?>">Eliminar</a>
-        </td>
-        <td>
             <a href="<?= BASE_URL ?>verMasCategoria/<?= $categoria->id ?>">Ver Más</a>
         </td>
     </tr>
