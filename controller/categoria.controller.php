@@ -24,11 +24,11 @@ class categoriaController{
         if(!$categoria){
             return $this->view->mostrarErrores("No se a encontrado la categoria con la id: $ID_categoria");
         }
-        return $this->view->listadoCategoria($categoria);
+        $viajes = $this->model->getViajesByCategoriaId($ID_categoria); 
+
+    return $this->view->listadoCategoria($categoria, $viajes);
     }
-    public function formEditarCategoria($ID_categoria){
-        $ID_categoria= $this->model->verCategoriaById($ID_categoria);
- }
+
     public function mostrarformCategorias(){
        // $categoria= $this->model->getCategorias();
         $this->view->mostrarformCategoria();
@@ -76,12 +76,12 @@ class categoriaController{
                   $empresa = $_POST['empresa'];
                   $comodidad = $_POST['comodidad'];
                 
-                 $categoria=  $this->model->editarCategoria($ID_categoria,$temporada, $empresa, $comodidad);
-                 if($categoria){
-                    header('Location: ' . BASE_URL . 'verMasViajes' );
-                 }else{
-                return $this->view->mostrarErrores("No se puede actualizar la categoria");
-                 }    
+                  $categoriaEditada= $this->model->editarCategoria($ID_categoria,$temporada, $empresa, $comodidad);
+                  if(!$categoriaEditada){
+                     header('Location: ' . BASE_URL . 'mostrarCategoria' );
+                  }else{
+                 return $this->view->mostrarErrores("No se puede actualizar la categoria");
+                  } 
          }     
     public function borrarCategoria($ID_categoria){
         $categoria = $this->model->verCategoriaById($ID_categoria);
@@ -89,7 +89,7 @@ class categoriaController{
             return $this->view->mostrarErrores("No existe la viaje con el id=$ID_categoria");
         }
         $this->model->borrarCategoria($ID_categoria);
-        header('Location: ' . BASE_URL );
+        header('Location: ' . BASE_URL . 'mostrarCategoria');
     }
 }
  

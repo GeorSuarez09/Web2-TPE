@@ -45,11 +45,12 @@ public function verCategoriaById($ID_categoria){
     
     
 
-    // editar de la DB
-    public function editarCategoria($ID_categoria, $temporada, $empresa, $comodidad) { 
-        $query = $this->db->prepare('UPDATE categoria SET temporada = ?, empresa = ?, comodidad = ? WHERE id = ?');
-        $query->execute([$ID_categoria, $temporada, $empresa, $comodidad]);
+  
+    public function editarCategoria( $ID_categoria, $temporada, $empresa, $comodidad) { 
+        $query = $this->db->prepare('UPDATE categoria SET `temporada` = ?, `empresa` = ?, `comodidad` = ? WHERE `id` = ?');
+        $query->execute([$temporada, $empresa, $comodidad, $ID_categoria]);  // Los parámetros están en el orden correcto
     }
+    
     
     
     // borrar de la DB
@@ -58,4 +59,11 @@ public function verCategoriaById($ID_categoria){
         $query->execute([$ID_categoria]);
     }
 
+        // Obtener los viajes asociados a una categoría
+public function getViajesByCategoriaId($ID_categoria) {
+    $query = $this->db->prepare('SELECT * FROM viaje WHERE id = ?');
+    $query->execute([$ID_categoria]);
+    $viajes = $query->fetchAll(PDO::FETCH_OBJ);
+    return $viajes;
+}
 }

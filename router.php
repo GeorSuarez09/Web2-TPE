@@ -33,7 +33,6 @@ agregarCategoria -->           categoriaController() -> agregarCategoria()
 mostrarFomEditCategoria/:ID--> categoriaController() -> mostrarFormEditCategoria($params[1])
 editarCategoria/:ID -->        categoriaController() -> modificarCategoria($params[1])
 
-viajePorCategoria/:ID -->          viajeController() -> verViajeXCategoria($params[1])
 */
 
 switch ($params[0]) {
@@ -42,42 +41,38 @@ switch ($params[0]) {
         $controller = new viajeController($res);
         $controller->mostrarViajes();
         break;
-        
     case 'verMasViajes':
         $controller = new viajeController();
-        $controller->mostrarViaje($params[1]); // $params[1] es el ID del viaje
+        $controller->mostrarViaje($params[1]);
         break;
-
     case 'formularioViajes':
         $controller = new viajeController();
         $controller->mostrarformViajes();
         break;
-
     case 'agregar':
-        sessionAuthMiddleware($res); // veirifica que el usuario este logueado y setea $res->user, o redirige a login
+        sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new viajeController($res);
         $controller->addViaje();
         break;
-
     case 'eliminar':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new viajeController($res); 
         $controller->eliminarViaje($params[1]);
         break;
-
     case 'editarViaje':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new viajeController($res);
         $controller->mostrarformEditViaje($params[1]);
         break;
-
     case 'update':
         $controller = new viajeController();
         $controller->updateViajes($params[1]);
         break;
+
+     //----------------------------------------------------------------------------------------
     case 'showLogin':
         $controller = new AuthController($res);
         $controller->showLogin();
@@ -91,12 +86,15 @@ switch ($params[0]) {
         $controller->logout();
         break;
 
-
     //----------------------------------------------------------------------------------------
     case 'mostrarCategoria':
         $controller = new categoriaController();
         $controller->mostrarCategorias();
         break;
+     case 'verMasCategoria':
+            $controller = new categoriaController();
+            $controller->mostrarCategoria($params[1]);
+            break;
     case 'eliminarCategoria':
         $controller = new categoriaController(); 
         $controller->borrarCategoria($params[1]);
@@ -118,11 +116,6 @@ switch ($params[0]) {
         $controller->modificarCategoria($params[1]);
         break;
 
-        
-        case 'viajePorCategoria':
-            $controller = new viajeController();
-            $controller->verViajeXCategoria($params[1]);
-           break;
         default:
           echo "La pagina que busca no esta disponible";
             break;

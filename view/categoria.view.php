@@ -6,7 +6,7 @@ class categoriaView{
         require_once './templates/categoria/listacategoria.phtml';
     }
     public function listadoCategoria($categoria) {
-        require_once './templatesviaje/detalleviaje.phtml';
+        require_once './templates/categoria/detalleCategoria.phtml';
 
     }
     public function mostrarformCategoria(){

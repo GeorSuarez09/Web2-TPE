@@ -118,11 +118,5 @@ public function eliminarViaje($ID_viaje){
 
 }
 
-public function verViajeXCategoria($categoria)
-{
-    $viaje = $this->model->mostrarViajeXCategoria($categoria);
-    $categoria = $this->model->verCategoriaById($categoria);
-    $this->view->mostrarViajeXCategoria($viaje, $categoria);
-}
 }
 ?>

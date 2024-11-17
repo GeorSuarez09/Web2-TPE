@@ -11,17 +11,17 @@
            </tr>
         </thead>
         <tbody>
-        <?php foreach ($categoria as $categorias): ?> 
+        <?php foreach ($categorias as $categoria): ?> 
     <tr>
-        <td><?php echo $categorias->temporada; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
-        <td><?php echo $categorias->empresa; ?></td>
-        <td><?php echo $categorias->comodidad; ?></td>
+        <td><?php echo $categoria->temporada; ?></td> <!-- Acceder correctamente a las propiedades del objeto -->
+        <td><?php echo $categoria->empresa; ?></td>
+        <td><?php echo $categoria->comodidad; ?></td>
         <td>
-            <a href="editarCategoria/<?php echo $categorias->id; ?>">Editar Categoria</a>
-            <a href="eliminarCategoria/<?php echo $categorias->id; ?>">Eliminar</a>
+            <a href="mostrarFormEditCategoria/<?php echo $categoria->id; ?>">Editar Categoria</a>
+            <a href="eliminarCategoria/<?php echo $categoria->id; ?>">Eliminar</a>
         </td>
         <td>
-            <a href="<?= BASE_URL ?>verMasViajes/<?= $categorias->id ?>">Ver Más</a>
+            <a href="<?= BASE_URL ?>verMasCategoria/<?= $categoria->id ?>">Ver Más</a>
         </td>
     </tr>
 <?php endforeach; ?>

@@ -56,12 +56,5 @@
         $query = $this->db->prepare('DELETE FROM viaje WHERE ID_viaje = ?');
         $query->execute([$ID_viaje]);
     }
-
-    public function mostrarViajeXCategoria($ID_categoria){
-        $query = $this->db->prepare('SELECT * FROM viaje WHERE viaje.id = ?');
-        $query->execute([$ID_categoria]);
-        $viaje = $query->fetchAll(PDO::FETCH_OBJ);
-        return $viaje;
-    }
 }
     ?>
