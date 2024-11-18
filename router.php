@@ -88,7 +88,8 @@ switch ($params[0]) {
 
     //----------------------------------------------------------------------------------------
     case 'mostrarCategoria':
-        $controller = new categoriaController();
+        sessionAuthMiddleware($res);
+        $controller = new categoriaController($res);
         $controller->mostrarCategorias();
         break;
      case 'verMasCategoria':
@@ -96,7 +97,9 @@ switch ($params[0]) {
             $controller->mostrarCategoria($params[1]);
             break;
     case 'eliminarCategoria':
-        $controller = new categoriaController(); 
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new categoriaController($res); 
         $controller->borrarCategoria($params[1]);
         break;
     case 'formularioCategoria':
@@ -104,7 +107,9 @@ switch ($params[0]) {
         $controller->mostrarformCategorias();
         break;
     case 'agregarCategoria':
-        $controller = new categoriaController();
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new categoriaController($res);
          $controller->agregarCategoria();
         break;
     case 'mostrarFormEditCategoria':
@@ -112,6 +117,8 @@ switch ($params[0]) {
         $controller->mostrarFormEditCategoria($params[1]);
         break;
     case 'editarCategoria':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
         $controller = new categoriaController();
         $controller->modificarCategoria($params[1]);
         break;
