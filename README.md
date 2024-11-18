@@ -27,8 +27,8 @@ URL: /verMasViajes/:ID
 🔗 Listado de Categorias: Visualización de las categorias registradas.
 URL: /mostrarCategoria
 
-🔗 Viajes por Categorias: Ver los viajes realizados incluyendo las categorias.
-URL: /viajePorCategoria/:ID
+🔗 Viajes por Categorias:Ver las categorias incluyendo el viaje, si es que tiene uno.
+URL: /verMasCategoria
 
 
 ----------------------------------
