@@ -1,6 +1,10 @@
 <?php
 class categoriaView{
-    // mostrar DB
+    public $user;
+
+    public function __construct($user = null) {
+        $this->user = $user;
+    }
     public function mostrarCategoria($categorias){
         // traigo el PHTL del listado;
         require_once './templates/categoria/listacategoria.phtml';
