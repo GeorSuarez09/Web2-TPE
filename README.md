@@ -44,3 +44,7 @@ Listar Categoria: URL: /mostrarCategoria
 Agregar Categoria: URL: /formularioCategoria
 Editar Categoria: URL: /mostrarFormEditCategoria/:ID
 Eliminar Categoria: URL: /eliminarCategoria/:ID
+
+Ingresas con el usuario
+Gmail geomel@tpe.com
+Password geomeltpe
